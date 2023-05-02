@@ -132,9 +132,8 @@ c_feats = classes[np.where(classes > 21)]
 
 # Use list of barcodes to convert class labels (0-35) to sequence labels, then convert to SMILES representation
 ab_barcode_list = ['CAAATA','TCATAC','ATATCT','CTCCAC','ATCTAA','CTCAAA','AAATAC','TCCAAC','CAAAAC','ACCTCC','GGGTTC','TGATTG','AGAGTT','AGAGGA','ATATCA','TTCTGT','AGCCTC','GATACT','TCTCTG','AATCAA','TGGAAG','GCACAT']
-ab_kmer_list = [barcode_dict[c] for c in ab_classes]
-# print(ab_kmer_list)
-
+ab_kmer_list = [barcode_dict[c] for c in ab_classes] #rept?
+# print("ab_kmer_list len:", len(ab_kmer_list))
 # SMILES strings for standard DNA bases
 dna_base_smiles = {'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
             'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
@@ -146,8 +145,10 @@ barcode_smiles_dict = make_bc_smiles_dict(ab_barcode_list, dna_base_smiles)
 # Convert each label in data to SMILES representation
 # test_kmer_list = ['CAAATA','TCATAC','ATATCT','CTCCAC']
 # test_smiles_list = [barcode_smiles_dict[i] for i in test_kmer_list]
-ab_smiles_list = [barcode_smiles_dict[i] for i in ab_kmer_list]
-
+ab_smiles_list = set([barcode_smiles_dict[i] for i in ab_kmer_list])
+# for i in range(20):
+#      print(ab_smiles_list[i])
+# print(len(ab_smiles_list))
 # Get adjacency and feature matrices for each data point
 # A,X = get_AX_matrix(test_smiles_list, ['C', 'N', 'O', 'P'], 133) 
 A,X = get_AX_matrix(ab_smiles_list, ['C', 'N', 'O', 'P'], 133) # zero pad to largest number of atoms
@@ -174,21 +175,26 @@ print(len(ab_kmer_list))
 # _______________________________convert adjacency data if using Geometric library (incomplete)___________________________________
 # # For PyG network input, need adjacency matrices in COO formation (convert sparse adjacency matrix to edge index)
 # # Edge index should be [2, num_edges], start and end coordinate for each edge in each graph
-# edge_indices = []
-# for adj_mat in range(len(A)):
-#     graph = nx.from_numpy_array(A[adj_mat])
-#     adj = nx.to_scipy_sparse_array(graph).tocoo()
-#     row = torch.from_numpy(adj.row.astype(np.int64)).to(torch.long)
-#     col = torch.from_numpy(adj.col.astype(np.int64)).to(torch.long)
-#     edge_index = torch.stack([row, col], dim=0)
-#     edge_indices.append(edge_index)
-# print(len(edge_indices))
+edge_indices = []
+for adj_mat in range(len(A)):
+    graph = nx.from_numpy_array(A[adj_mat])
+    adj = nx.to_scipy_sparse_array(graph).tocoo()
+    row = torch.from_numpy(adj.row.astype(np.int64)).to(torch.long)
+    col = torch.from_numpy(adj.col.astype(np.int64)).to(torch.long)
+    edge_index = torch.stack([row, col], dim=0)
+    edge_indices.append(edge_index)
+
+max_size = max(arr.shape[1] for arr in edge_indices)
+for i in range(len(A)):
+    edge_indices[i] = np.pad(edge_indices[i], [(0, 0), (0, max_size - edge_indices[i].shape[1])], mode='constant')
+print(len(edge_indices))
 
 
 # # Problem - conversion to COO results in different lengths of edge indices due to dependence on number of bonds/edges
 # # Try padding edge indices to max len (zero pad at end) - not sure if will affect GCN encoding - discuss
 
 
-# edge_ids = torch.tensor(np.dstack(edge_indices))
-# print(edge_ids)
-# print(edge_ids.shape)
+# edge_ids = torch.tensor(np.concatenate(edge_indices, axis=1))
+edge_ids = torch.tensor(np.dstack(edge_indices))
+print(edge_ids)
+print(edge_ids.shape)
