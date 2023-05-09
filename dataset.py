@@ -10,18 +10,18 @@ from rdkit.Chem import rdDepictor
 from rdkit.Chem.Draw import rdMolDraw2D
 from collections import defaultdict
 import torch_geometric
-from torch_geometric.data import Data, Dataset
+from torch_geometric.data import Data, Dataset, InMemoryDataset
 import os
 import random
 print(f"Torch version: {torch.__version__}")
 print(f"Cuda available: {torch.cuda.is_available()}")
 print(f"Torch geometric version: {torch_geometric.__version__}")
 
-class DatasetLoader(Dataset):
-    def __init__(self, root, A, X, edge_feat, transform=None, pre_transform=None):
+class DatasetLoader(InMemoryDataset):
+    def __init__(self, root, A, X, edge_labels, transform=None, pre_transform=None):
         self.A = A
         self.X = X
-        self.edge_feat = edge_feat
+        self.edge_labels = edge_labels
         super(DatasetLoader, self).__init__(root, transform, pre_transform)
 
     @property
@@ -33,7 +33,7 @@ class DatasetLoader(Dataset):
 
     @property
     def processed_file_names(self):
-        return "not_implemented.pt"
+        return "data.pt"
 
     def download(self):
         pass
@@ -51,27 +51,35 @@ class DatasetLoader(Dataset):
         max_size = max(arr.shape[1] for arr in edge_indices)
         for i in range(len(self.A)):
             edge_indices[i] = np.pad(edge_indices[i], [(0, 0), (0, max_size - edge_indices[i].shape[1])], mode='constant')
-        # print(len(edge_indices))
-
-        # # Problem - conversion to COO results in different lengths of edge indices due to dependence on number of bonds/edges
-        # # Try padding edge indices to max len (zero pad at end) - not sure if will affect GCN encoding - discuss
 
         # edge_ids = torch.tensor(np.dstack(edge_indices), dtype=float)
-        edge_ids = torch.tensor(edge_indices, dtype=float)
+        edge_ids = torch.tensor(np.array(edge_indices), dtype=float)
         # no stack: [22, 2, 294]
         # stack: [2, 294, 22]
 
-        print(edge_ids)
+        # print(edge_ids)
         print(edge_ids.shape)
 
         print(len(edge_ids))
+        data_list = []
         for i in range(len(self.X)):
-            data = Data(x=self._get_node_features(self.X[i]), edge_index=edge_ids[i]) # what about edge_attributes (edge_features) -> is that the ab_features:: How to split?
+            node_feats = self._get_node_features(self.X[i])
+            adjacency_info = self._get_adjacency_info(edge_ids[i])
+            edge_feats = self._get_edge_features()  # currently None
+            label = self._get_label(self.edge_labels[i])
+
+            data = Data(
+                x=node_feats,
+                edge_index=adjacency_info, 
+                edge_attr=edge_feats,
+                y=label)
             data.validate(raise_on_error=True)
-            torch.save(data, os.path.join(self.processed_dir, f'data_{i}.pt'))
-            # do we have to create like 22 datasets?
-        print("num edges: ", data.num_edges)
+            data_list.append(data)
+            # torch.save(data, os.path.join(self.processed_dir, f'data_{i}.pt'))
+        data, slices = self.collate(data_list)
         data.validate(raise_on_error=True)
+        torch.save((data, slices), self.processed_paths[0])
+        # print("num edges: ", data.num_edges)
 
     def _get_node_features(self, node_matrix):
         return torch.tensor(node_matrix, dtype=float)
@@ -80,7 +88,12 @@ class DatasetLoader(Dataset):
         return None
 
     def _get_adjacency_info(self, edge_id_list):
-        return torch.tensor(edge_id_list, dtype=torch.long)
+        return edge_id_list
+
+    def _get_label(self, label):
+        label = np.asarray([label])
+        return torch.tensor(label, dtype=float)
+    
     def len(self):
         return self.data.shape[0]
     

@@ -129,7 +129,6 @@ ab_classes = classes[np.where(classes <= 21)]
 c_classes = classes[np.where(classes > 21)]
 ab_feats = features[np.where(classes <= 21)]
 c_feats = classes[np.where(classes > 21)]
-
 # Use list of barcodes to convert class labels (0-35) to sequence labels, then convert to SMILES representation
 ab_barcode_list = ['CAAATA','TCATAC','ATATCT','CTCCAC','ATCTAA','CTCAAA','AAATAC','TCCAAC','CAAAAC','ACCTCC','GGGTTC','TGATTG','AGAGTT','AGAGGA','ATATCA','TTCTGT','AGCCTC','GATACT','TCTCTG','AATCAA','TGGAAG','GCACAT']
 ab_kmer_list = [barcode_dict[c] for c in ab_classes] #rept?
@@ -155,6 +154,9 @@ A,X = get_AX_matrix(ab_smiles_list, ['C', 'N', 'O', 'P'], 133) # zero pad to lar
 
 ab_feats_medians = ab_feats[:,4] # median current values for each example
 
+ab_feats_medians_dict = {} # maps class to average median value
+for i in range(22):
+    ab_feats_medians_dict[i] = np.average(ab_feats_medians[np.where(classes == i)])
 print('A: ', A.shape)
 print('X: ', X.shape)
 print('ab_feats: ', ab_feats_medians.shape)
@@ -166,7 +168,8 @@ print(len(ab_kmer_list))
 # np.save('ab_feats_medians.npy', ab_feats_medians)
 # np.save('ab_kmer_labels.npy', ab_kmer_list)
 
-data = DatasetLoader("data/", A, X, ab_feats_medians)
+data = DatasetLoader("data/", A, X, ab_feats_medians_dict)
+data.process()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # _______________________________convert adjacency data if using Geometric library (incomplete)___________________________________
