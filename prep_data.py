@@ -9,8 +9,8 @@ from rdkit import Chem
 from rdkit.Chem import rdDepictor
 from rdkit.Chem.Draw import rdMolDraw2D
 from collections import defaultdict
-
-
+from torch_geometric.data import Data
+from dataset import DatasetLoader
 def get_smiles_string(kmer, base_dict):
     s = []
     for base in range(0, len(kmer)):
@@ -115,8 +115,8 @@ def get_AX_matrix(smiles, Atms, nAtms):
 # __________________________________________________________________________
 
 # Load barcode data and classes
-classes = np.load('barcode_frontier_33way_11760examples_classes.npy') # barcode labels 0-35
-features = np.load('barcode_frontier_33way_11760examples_5features.npy') #[mean, std, min, max, median]
+classes = np.load('data/barcode_frontier_33way_11760examples_classes.npy') # barcode labels 0-35
+features = np.load('data/barcode_frontier_33way_11760examples_5features.npy') #[mean, std, min, max, median]
 
 # Mapping between barcodes and class labels
 barcode_dict = {0 : 'CAAATA', 1 : 'TCATAC', 2 : 'ATATCT', 3 : 'CTCCAC', 4 : 'ATCTAA', 5 : 'CTCAAA', 6 : 'AAATAC', 7 : 'TCCAAC', 8 : 'CAAAAC', 9 : 'ACCTCC',
@@ -166,35 +166,49 @@ print(len(ab_kmer_list))
 # np.save('ab_feats_medians.npy', ab_feats_medians)
 # np.save('ab_kmer_labels.npy', ab_kmer_list)
 
-
-
-
-
-
+data = DatasetLoader("data/", A, X, ab_feats_medians)
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # _______________________________convert adjacency data if using Geometric library (incomplete)___________________________________
 # # For PyG network input, need adjacency matrices in COO formation (convert sparse adjacency matrix to edge index)
 # # Edge index should be [2, num_edges], start and end coordinate for each edge in each graph
-edge_indices = []
-for adj_mat in range(len(A)):
-    graph = nx.from_numpy_array(A[adj_mat])
-    adj = nx.to_scipy_sparse_array(graph).tocoo()
-    row = torch.from_numpy(adj.row.astype(np.int64)).to(torch.long)
-    col = torch.from_numpy(adj.col.astype(np.int64)).to(torch.long)
-    edge_index = torch.stack([row, col], dim=0)
-    edge_indices.append(edge_index)
+# edge_indices = []
+# for adj_mat in range(len(A)):
+#     graph = nx.from_numpy_array(A[adj_mat])
+#     adj = nx.to_scipy_sparse_array(graph).tocoo()
+#     row = torch.from_numpy(adj.row.astype(np.int64)).to(torch.long)
+#     col = torch.from_numpy(adj.col.astype(np.int64)).to(torch.long)
+#     edge_index = torch.stack([row, col], dim=0)
+#     edge_indices.append(edge_index)
 
-max_size = max(arr.shape[1] for arr in edge_indices)
-for i in range(len(A)):
-    edge_indices[i] = np.pad(edge_indices[i], [(0, 0), (0, max_size - edge_indices[i].shape[1])], mode='constant')
-print(len(edge_indices))
+# max_size = max(arr.shape[1] for arr in edge_indices)
+# for i in range(len(A)):
+#     edge_indices[i] = np.pad(edge_indices[i], [(0, 0), (0, max_size - edge_indices[i].shape[1])], mode='constant')
+# # print(len(edge_indices))
 
+# # # Problem - conversion to COO results in different lengths of edge indices due to dependence on number of bonds/edges
+# # # Try padding edge indices to max len (zero pad at end) - not sure if will affect GCN encoding - discuss
 
-# # Problem - conversion to COO results in different lengths of edge indices due to dependence on number of bonds/edges
-# # Try padding edge indices to max len (zero pad at end) - not sure if will affect GCN encoding - discuss
+# # edge_ids = torch.tensor(np.dstack(edge_indices), dtype=float)
+# edge_ids = torch.tensor(edge_indices, dtype=float)
+# # no stack: [22, 2, 294]
+# # stack: [2, 294, 22]
 
+# def get_adjacency_info(edge_id_list):
+#     edge_indices_adj = []
+#     for e in edge_id_list:
+#         edge_indices_adj += [[1,1], [1,1]] # how to set up adjacency info? what about edge_attributes (edge_features)?
+#         print("EE: ", e[0][0])
+#     edge_indices_adj = torch.tensor(edge_indices_adj)
+#     edge_indices_adj = edge_indices_adj.t().to(torch.long).view(2, -1)
+#     return edge_indices_adj
 
-# edge_ids = torch.tensor(np.concatenate(edge_indices, axis=1))
-edge_ids = torch.tensor(np.dstack(edge_indices))
-print(edge_ids)
-print(edge_ids.shape)
+# print(edge_ids)
+# print(edge_ids.shape)
+
+# print(len(edge_ids))
+# data = Data(x=torch.tensor(X, dtype=float), edge_index=get_adjacency_info(edge_ids))
+# # do we have to create like 22 datasets?
+# print("num edges: ", data.num_edges)
+# data.validate(raise_on_error=True)
+# # print(data)
