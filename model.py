@@ -50,7 +50,7 @@ class SimpleGNN(nn.Module):
 
         return out, h
 
-def train(train_loader):#, model, optimizer, criterion):
+def train(train_loader):
     model.train()
     for train_data in train_loader:
         # zero gradients
@@ -67,7 +67,7 @@ def train(train_loader):#, model, optimizer, criterion):
     return loss, embedding
 
 @torch.no_grad()
-def test(test_loader):#, model, optimizer, criterion, epochs):
+def test(test_loader):
     model.eval()
     for test_data in test_loader:
         y_pred, embedding = model(test_data.x, test_data.edge_index.long(), test_data.batch)
