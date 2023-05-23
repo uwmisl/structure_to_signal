@@ -9,16 +9,19 @@ import os, glob
 from matplotlib import pyplot as plt
 import numpy as np
 
-def rmse(y, y_pred):
-    return np.sqrt(np.mean(np.square(y - y_pred)))
-
-def plot_train_test(epochs, train_losses, test_losses):
-    plt.plot(list(range(epochs)), train_losses, label="Train")
-    plt.plot(list(range(epochs)), test_losses, label="Test")
-    plt.xlabel("Epoch")
-    plt.ylabel("Loss")
+def plot(x, y1, y2, label1, label2, x_label, y_label):
+    plt.plot(list(range(x)), y1, label=label1)
+    plt.plot(list(range(x)), y2, label=label2)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
     plt.legend()
     plt.show()
+
+def rmse(y, y_pred):
+    return torch.sqrt(torch.mean(torch.square(y - y_pred)))
+
+def mae(y, y_pred):
+    return torch.mean(torch.abs(y - y_pred))
 
 class SimpleGNN(nn.Module):
     def __init__(self):
@@ -58,13 +61,14 @@ def train(train_loader):
         # Forward pass
         y_pred, embedding = model(train_data.x, train_data.edge_index.long(), train_data.batch)
         # Calculate loss
-        # print(f'y: {train_data.y.shape} pred: {y_pred.shape}')
         loss = criterion(y_pred, train_data.y.unsqueeze(1))
         # Compute gradients
         loss.backward()
+        train_rmse = rmse(train_data.y.unsqueeze(1).detach(), y_pred.detach())
+        train_mae =  mae(train_data.y.unsqueeze(1).detach(), y_pred.detach())
         # Update parameters
         optimizer.step()
-    return loss, embedding
+    return loss, embedding, train_rmse, train_mae
 
 @torch.no_grad()
 def test(test_loader):
@@ -72,7 +76,9 @@ def test(test_loader):
     for test_data in test_loader:
         y_pred, embedding = model(test_data.x, test_data.edge_index.long(), test_data.batch)
         loss = criterion(y_pred, test_data.y.unsqueeze(1))
-    return loss, embedding        
+        test_rmse = rmse(test_data.y.unsqueeze(1).detach(), y_pred.detach())
+        test_mae = mae(test_data.y.unsqueeze(1).detach(), y_pred.detach())
+    return loss, embedding, test_rmse, test_mae        
 
 
 # __________________________________________________________________________________________
@@ -105,17 +111,28 @@ optimizer = "Adam"
 lr = 0.0001
 optimizer = getattr(torch.optim, optimizer)(model.parameters(), lr=lr)
 criterion = nn.MSELoss()
-epochs = 30
+epochs = 40
 
 # Train model
 train_losses = []
 test_losses = []
+train_rmses = []
+test_rmses = []
+train_maes = []
+test_maes = []
 for epoch in range(epochs):
-    trn_loss, trn_emb = train(train_loader)
+    # train
+    trn_loss, trn_emb, trn_rmse, trn_mae = train(train_loader)
     train_losses.append(trn_loss.item())
-    tst_loss, tst_emb = test(test_loader)
+    train_rmses.append(trn_rmse)
+    train_maes.append(trn_mae)
+    # test
+    tst_loss, tst_emb, tst_rmse, tst_mae = test(test_loader)
     test_losses.append(tst_loss.item())
-    print(f'Epoch: {epoch}, Train Loss: {trn_loss:.4f}, Test Loss: {tst_loss:.4f}')
+    test_rmses.append(tst_rmse)
+    test_maes.append(tst_mae)
+    print(f'Epoch: {epoch}: Train Loss: {trn_loss:.4f} | Test Loss: {tst_loss:.4f} | Train rmse: {trn_rmse:.4f} | Test rmse: {tst_rmse:.4f} | Train mae: {trn_mae:.4f} | Test mae: {tst_mae:.4f}')
 
-# Plot
-plot_train_test(epochs, train_losses, test_losses)
+plot(epochs, train_losses, test_losses, 'Train', 'Test', 'Epoch', 'Loss')
+plot(epochs, train_rmses, test_rmses, 'Train', 'Test', 'Epoch', 'RMSE')
+plot(epochs, train_maes, test_maes, 'Train', 'Test', 'Epoch', 'MAE')
