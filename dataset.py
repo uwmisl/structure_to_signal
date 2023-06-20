@@ -67,18 +67,17 @@ class DatasetLoader(InMemoryDataset):
             adjacency_info = self._get_adjacency_info(edge_ids[i])
             edge_feats = self._get_edge_features()  # currently None
             label = self._get_label(self.edge_labels[i])
-
             data = Data(
                 x=node_feats,
                 edge_index=adjacency_info, 
                 edge_attr=edge_feats,
                 y=label)
             data.validate(raise_on_error=True)
-            data_list.append(data)
-            # torch.save(data, os.path.join(self.processed_dir, f'data_{i}.pt'))
-        data, slices = self.collate(data_list)
+            # data_list.append(data)
+            torch.save(data, os.path.join(self.processed_dir, f'data_{i}.pt'))
+        # data, slices = self.collate(data_list)
         data.validate(raise_on_error=True)
-        torch.save((data, slices), self.processed_paths[0])
+        # torch.save((data, slices), self.processed_paths[0])
         # print("num edges: ", data.num_edges)
 
     def _get_node_features(self, node_matrix):
