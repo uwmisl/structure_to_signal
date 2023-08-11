@@ -4,7 +4,6 @@ from torch_geometric.nn import GCNConv
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import global_mean_pool as gap, global_max_pool as gmp
 import torch.nn.functional as F
-from dataset import DatasetLoader
 import os, glob
 from matplotlib import pyplot as plt
 import numpy as np

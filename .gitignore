@@ -1,3 +1,4 @@
 
-/data/processed
+/data/processed/
 /test_results
+*.pt
