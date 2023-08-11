@@ -42,34 +42,38 @@ class DatasetLoader(InMemoryDataset):
     def process(self):
         edge_indices = []
         for adj_mat in range(len(self.A)):
-            graph = nx.from_numpy_array(self.A[adj_mat])
-            adj = nx.to_scipy_sparse_array(graph).tocoo()
-            row = torch.from_numpy(adj.row.astype(np.int64)).to(torch.long)
-            col = torch.from_numpy(adj.col.astype(np.int64)).to(torch.long)
-            edge_index = torch.stack([row, col], dim=0)
+            row, col = np.where(self.A[adj_mat] != 0)
+            edge_index = torch.tensor([row, col], dtype=torch.long)
             edge_indices.append(edge_index)
         
-        print("Before Padding")
-        print(edge_indices)
-        max_size = max(arr.shape[1] for arr in edge_indices)
-        for i in range(len(self.A)):
-            edge_indices[i] = np.pad(edge_indices[i], [(0, 0), (0, max_size - edge_indices[i].shape[1])], mode='constant')
-        print("After Padding")
-        # print(edge_indices)
-        # edge_ids = torch.tensor(np.dstack(edge_indices), dtype=float)
-        edge_ids = torch.tensor(np.array(edge_indices), dtype=float)
+        
+        # edge_indices = []
+        # for adj_mat in range(len(self.A)):
+        #     graph = nx.from_numpy_array(self.A[adj_mat])
+        #     adj = nx.to_scipy_sparse_array(graph).tocoo()
+        #     row = torch.from_numpy(adj.row.astype(np.int64)).to(torch.long)
+        #     col = torch.from_numpy(adj.col.astype(np.int64)).to(torch.long)
+        #     edge_index = torch.stack([row, col], dim=0)
+        #     edge_indices.append(edge_index)
 
-        # print("Edge ID COO format")
-        # print(edge_ids)
+        # max_size = max(arr.shape[1] for arr in edge_indices)
+        # for i in range(len(self.A)):
+        #     edge_indices[i] = np.pad(edge_indices[i], [(0, 0), (0, max_size - edge_indices[i].shape[1])], mode='constant')
+
+        # edge_ids = torch.tensor(np.dstack(edge_indices), dtype=float)
+        # edge_ids = torch.tensor(np.array(edge_indices), dtype=float)
         # no stack: [22, 2, 294]
         # stack: [2, 294, 22]
 
-        # data_list = []
-        print("Date Points")
+        # print(edge_ids)
+        # print(edge_ids.shape)
+
+        # print(len(edge_ids))
+        data_list = []
         for i in range(len(self.X)):
             node_feats = self._get_node_features(self.X[i])
-            adjacency_info = self._get_adjacency_info(edge_ids[i])
-            edge_feats = self._get_edge_features()  # currently None, should it?
+            adjacency_info = self._get_adjacency_info(edge_indices[i])
+            edge_feats = self._get_edge_features()  # currently None
             label = self._get_label(self.edge_labels[i])
             write_list_to_file(f'data_{i}_node_feats.pt', node_feats)
             write_list_to_file(f'data_{i}_adj_info.pt', adjacency_info)
