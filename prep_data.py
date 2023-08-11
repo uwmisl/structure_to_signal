@@ -18,12 +18,6 @@ def get_smiles_string(kmer, base_dict):
     smiles = ''.join(map(str, s))+'O'
     return smiles
 
-# 'data/template_median68pA.model'
-# dna_base_smiles = {'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
-#                    'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
-#                    'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)CC1',
-#                    'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1'}
-
 def to_barcode_feats_dicts(file_path: str):
     barcode_dict_model = {}
     ab_feats_medians_model = []
@@ -146,45 +140,11 @@ def add_AX_columns_to_dataframe(df, Atms, nAtms):
 
     return padded_A_mat, padded_X_mat 
 
-class DataPrepper():
-    def __init__(self, barcode_dict: dict, feat_medians: dict, dna_base_smiles: dict) -> None:
-        self.barcode_dict = barcode_dict
-        self.feat_medians = feat_medians
-        self.dna_base_smiles = dna_base_smiles
-
-    def get_smiles_string(self, kmer: str):
-        s = []
-        for base in range(0, len(kmer)):
-            b = kmer[base]
-            s.append(self.dna_base_smiles.get(b))
-        smiles = ''.join(map(str, s))+'O'
-        return smiles
-
-    def make_bc_smiles_dict(self, barcode_list):
-        barcode_smiles_dict = {}
-        for bc in barcode_list:
-            barcode_smiles_dict[bc] = self.get_smiles_string(bc)
-        return barcode_smiles_dict
-    
-    def process_data(self):
-        ab_barcode_list_model = self.barcode_dict.values()
-        barcode_smiles_dict_model = self.make_bc_smiles_dict(ab_barcode_list_model)
-
-        ab_smiles_list_model = set([barcode_smiles_dict_model[i] for i in ab_barcode_list_model])
-        A_model,X_model = get_AX_matrix(ab_smiles_list_model, ['C', 'N', 'O', 'P'], 133) # zero pad to largest number of atoms
-
-        ab_feats_medians_dict_model = {}
-        for i in range(len(ab_barcode_list_model)):
-            ab_feats_medians_dict_model[i] = float(self.feat_medians[i])
-        data = DatasetLoader("data/", A_model, X_model, ab_feats_medians_dict_model)
-        data.process()
-        print("FINISHED")
-
-
+### MAIN ###
 # load data
 file_path = 'data/template_median68pA.model'
 df = pd.read_csv(file_path, delimiter='\t')
-print(df)
+# print(df)
 
 dna_base_smiles = {'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
             'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
@@ -199,7 +159,7 @@ print(A.shape)
 print(X.shape)
 
 level_means = col_list = df['level_mean'].values.tolist()
-print(level_means)
+# print(level_means)
 
 data = DatasetLoader("data/", A, X, level_means)
 data.process()

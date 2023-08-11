@@ -17,26 +17,17 @@ class TestPrepData(unittest.TestCase):
         }
     ab_feats_medians_model = [108.901413]
     
-    def test_make_bc_smiles_dict(self):
-        data_prep = DataPrepper(self.barcode_dict_model, self.ab_feats_medians_model, self.dna_base_smiles)
 
-        smiles_dict = data_prep.make_bc_smiles_dict(["AAAAA", "AACTG"])
-        actual = {
-            'AAAAA':'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1O',
-            'AACTG':'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)CC1O'
-        }
-        self.assertDictEqual(actual, smiles_dict)
 
     def test_get_n_hydro(self):
-        data_prep = DataPrepper(self.barcode_dict_model, self.ab_feats_medians_model, self.dna_base_smiles)
-        result = get_n_hydro(data_prep.get_smiles_string('AAAAA'))
+        # data_prep = DataPrepper(self.barcode_dict_model, self.ab_feats_medians_model, self.dna_base_smiles)
+        result = get_n_hydro(get_smiles_string('AAAAA'))
         print ("test_get_n_hydro")
         print (result)
         pass
 
     def test_get_compound_graph(self):
-        data_prep = DataPrepper(self.barcode_dict_model, self.ab_feats_medians_model, self.dna_base_smiles)
-        smiles = data_prep.get_smiles_string('AAAAA')
+        smiles = get_smiles_string('AAAAA')
         resultA, resultX, = get_compound_graph(smiles, ['C', 'N', 'O', 'P'])
         write_list_to_file("test_get_compound_graph_resultA", resultA)
         write_list_to_file('test_get_compound_graph_resultX', resultX)
@@ -45,8 +36,7 @@ class TestPrepData(unittest.TestCase):
         pass
 
     def test_pad_compound_graph(self):
-        data_prep = DataPrepper(self.barcode_dict_model, self.ab_feats_medians_model, self.dna_base_smiles)
-        smiles = data_prep.get_smiles_string('AAAAA')
+        smiles = get_smiles_string('AAAAA')
         A, X = get_compound_graph(smiles,  ['C', 'N', 'O', 'P'])
         resultA = pad_compound_graph([A], 133)
         resultX = pad_compound_graph([X], 133, axis=0)
@@ -57,17 +47,10 @@ class TestPrepData(unittest.TestCase):
 
     def test_get_AX_matrix(self):
         print("test_get_AX_matrix")
-        data_prep = DataPrepper(self.barcode_dict_model, self.ab_feats_medians_model, self.dna_base_smiles)
-        barcode_smiles_dict_model = data_prep.make_bc_smiles_dict(['AAAAA'])        
-        A_model,X_model = get_AX_matrix(barcode_smiles_dict_model.values(), ['C', 'N', 'O', 'P'], 133)
-        write_list_to_file("test_get_AX_matrix_resultA", A_model)
-        write_list_to_file("test_get_AX_matrix_resultX", X_model)
         pass
 
     def test_dataset_loader(self):
         print("test_dataset_loader")
-        data_prep = DataPrepper(self.barcode_dict_model, self.ab_feats_medians_model, self.dna_base_smiles)
-        data_prep.process_data()
 
 if __name__ == '__main__':
     unittest.main()

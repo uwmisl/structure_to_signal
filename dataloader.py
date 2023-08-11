@@ -1,18 +1,10 @@
 import numpy as np
-import itertools
 from os import sys
-import torch.nn.functional as F
 from torch_geometric.utils.convert import to_scipy_sparse_matrix
-import networkx as nx
 import torch
-from rdkit import Chem
-from rdkit.Chem import rdDepictor
-from rdkit.Chem.Draw import rdMolDraw2D
-from collections import defaultdict
 import torch_geometric
-from torch_geometric.data import Data, Dataset, InMemoryDataset
+from torch_geometric.data import Data, InMemoryDataset
 import os
-import random
 
 def write_list_to_file(filename: str, list):
     with open("test_results/" + filename + ".txt", 'w') as f:
@@ -43,7 +35,7 @@ class DatasetLoader(InMemoryDataset):
         edge_indices = []
         for adj_mat in range(len(self.A)):
             row, col = np.where(self.A[adj_mat] != 0)
-            edge_index = torch.tensor([row, col], dtype=torch.long)
+            edge_index = torch.tensor(np.array([row, col]), dtype=torch.long)
             edge_indices.append(edge_index)
         
         
@@ -69,15 +61,14 @@ class DatasetLoader(InMemoryDataset):
         # print(edge_ids.shape)
 
         # print(len(edge_ids))
-        data_list = []
         for i in range(len(self.X)):
             node_feats = self._get_node_features(self.X[i])
             adjacency_info = self._get_adjacency_info(edge_indices[i])
             edge_feats = self._get_edge_features()  # currently None
             label = self._get_label(self.edge_labels[i])
-            write_list_to_file(f'data_{i}_node_feats.pt', node_feats)
-            write_list_to_file(f'data_{i}_adj_info.pt', adjacency_info)
-            write_list_to_file(f'data_{i}_label.pt', label)
+            # write_list_to_file(f'data_{i}_node_feats.pt', node_feats)
+            # write_list_to_file(f'data_{i}_adj_info.pt', adjacency_info)
+            # write_list_to_file(f'data_{i}_label.pt', label)
             # write_list_to_file(f'data_{i}_edge_feats.pt', edge_feats)
 
             data = Data(
@@ -86,7 +77,6 @@ class DatasetLoader(InMemoryDataset):
                 edge_attr=edge_feats,
                 y=label)
             data.validate(raise_on_error=True)
-            # data_list.append(data)
             torch.save(data, os.path.join(self.processed_dir, f'data_{i}.pt'))
 
         # data, slices = self.collate(data_list)
