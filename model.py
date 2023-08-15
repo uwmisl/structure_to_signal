@@ -4,29 +4,46 @@ from torch_geometric.nn import GCNConv, GraphConv, GATConv
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import global_mean_pool as gap, global_max_pool as gmp
 import torch.nn.functional as F
+from dataset import DatasetLoader
 import os, glob
 from matplotlib import pyplot as plt
 import numpy as np
 from torch_geometric.nn import MessagePassing
 from torch_geometric.utils import degree
 import random
+from sklearn.metrics import mean_squared_error
 
-def plot(x, y1, y2, label1, label2, x_label, y_label):
-    plt.plot(list(range(x)), y1, label=label1)
-    plt.plot(list(range(x)), y2, label=label2)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
-    plt.legend()
+class MeanSquaredLogError(nn.Module):
+    def __init__(self):
+        super(MeanSquaredLogError, self).__init__()
+
+    def forward(self, y_pred, y_true):
+        log_diff = torch.log(y_pred + 1) - torch.log(y_true + 1)
+        msle_loss = torch.mean(log_diff ** 2)
+        return msle_loss
+
+def plot_true_vs_predicted(true_values, predicted_values):
+    plt.figure(figsize=(8, 8))
+    plt.scatter(true_values, predicted_values, color='blue', alpha=0.5)
+    plt.xlabel('True Values')
+    plt.ylabel('Predicted Values')
+    plt.title('True vs. Predicted Values')
+    plt.grid()
     plt.show()
 
-def calculate_rmse(y, y_pred):
-    return torch.sqrt(torch.mean(torch.square(y - y_pred)))
-
-def calculate_mae(y, y_pred):
-    return torch.mean(torch.abs(y - y_pred))
+def plot_loss_over_epochs(losses, epochs):
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(1, epochs+1), losses, color='blue')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    # plt.yscale('log')  # Use a logarithmic scale for the y-axis
+    # plt.title('Loss Over Epochs (Log Scale)')
+    plt.title('Loss Over Epochs')
+    plt.grid()
+    plt.show()
 
 def load_data(file_path):
-    file_list = glob.glob('data/processed/data_*')
+    file_list = glob.glob('data3/processed/data_*')
     data_list = [torch.load(f) for f in file_list]
     return data_list
 
@@ -75,6 +92,7 @@ def create_data_loaders(train_dataset, test_dataset, batch=128):
 
 def train(model, train_loader, optimizer, criterion, epochs):
     model.train()
+    losses = []
     for epoch in range(epochs):
         epoch_loss = 0.0
         for batch in train_loader:
@@ -85,25 +103,33 @@ def train(model, train_loader, optimizer, criterion, epochs):
             loss.backward()
             optimizer.step()
             epoch_loss += loss.item()
+        losses.append(epoch_loss)
         print(f'Epoch {epoch+1}/{epochs}, Loss: {epoch_loss:.4f}')
+    return losses
 
-
-def test(model, test_loader, target_mean, target_std):
-    model.eval()
-    with torch.no_grad():
-        pred = []
-        true = []
+def test(model, test_loader, criterion):
+    model.eval()  # Set the model to evaluation mode
+    losses = []
+    true_values = []
+    predicted_values = []
+    
+    with torch.no_grad():  # Disable gradient computation during testing
         for batch in test_loader:
             batch = batch.to(device)
-            out = model(batch.x, batch.edge_index)
-            pred.extend(out.cpu().numpy())
-            true.extend(batch.y.cpu().numpy())
+            out = model(batch.x, batch.edge_index.long(), batch.batch)
+            loss = criterion(out, batch.y.view(-1, 1))  # Shape: [batch_size, 1]
+            losses.append(loss.item())
+            
+            true_values.extend(batch.y.view(-1, 1).cpu().numpy())
+            predicted_values.extend(out.cpu().numpy())
 
-    # Denormalize the predictions and true values
-    pred = (pred * target_std) + target_mean
-    true = (true * target_std) + target_mean
+    average_loss = sum(losses) / len(losses)
+    print(f'Average Test Loss: {average_loss:.4f}')
+    
+    rmse = np.sqrt(mean_squared_error(np.array(true_values), np.array(predicted_values)))
+    print(f'RMSE: {rmse:.4f}')
 
-    return pred, true
+    return losses, true_values, predicted_values
 
 class GNN(nn.Module):
     def __init__(self, in_features, hidden_features):
@@ -205,18 +231,11 @@ class GNN2(nn.Module):
 
         return x
 
-
-def print_weights(model):
-    for name, param in model.named_parameters():
-        if param.requires_grad:
-            print(f'Parameter: {name}, Initial Value: {param.data}')
-
-
 # Main
 # ___________________________________________________________________________________
 
 # load and process data
-file_path = 'data/processed/'
+file_path = 'data3/processed/'
 data_list = load_data(file_path)
 random.shuffle(data_list)
 
@@ -234,20 +253,17 @@ print(model)
 print("Parameters: ", sum(p.numel() for p in model.parameters()))
 
 # define optimizer and loss function
-optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
-criterion = nn.MSELoss()
-
-
-# print("Initial Weights:")
-# print_weights(model)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+# criterion = nn.MSELoss()
+criterion = MeanSquaredLogError()
 
 # train model
 epochs = 100
-train(model, train_loader, optimizer, criterion, epochs)
-
-# print("\nUpdated Weights:")
-# print_weights(model)  # Print the weights after training
+train_losses = train(model, train_loader, optimizer, criterion, epochs)
+plot_loss_over_epochs(train_losses, epochs)
+plot_logloss_over_epochs(train_losses, epochs)
 
 # test model
-# pred, true = test(model, test_loader, target_mean, target_std)
+tst_losses, true_values, predicted_values = test(model, test_loader, criterion)
 
+plot_true_vs_predicted(true_values, predicted_values)
