@@ -1,0 +1,1 @@
+{"epoch": 7, "train/loss": 0.020917015759725145, "_timestamp": 1692983099.7221878, "_runtime": 43.72249674797058, "_step": 8, "Loss Over Epochs": {"_type": "plotly-file", "sha256": "41b1bb5b5ce170907e94b8c089c835f44e75aa45b3fcdbfc234b058e5bf21fdc", "size": 8850, "path": "media/plotly/Loss Over Epochs_8_41b1bb5b5ce170907e94.plotly.json"}, "_wandb": {"runtime": 45}}

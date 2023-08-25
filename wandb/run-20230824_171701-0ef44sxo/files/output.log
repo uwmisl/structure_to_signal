@@ -1,0 +1,132 @@
+num training examples:  3276
+num testing examples:  820
+GNN2(
+  (GCNconv1): GCNConv(8, 128)
+  (GCNconv2): GCNConv(128, 64)
+  (GCNconv3): GCNConv(64, 32)
+  (GCNconv4): GCNConv(32, 16)
+  (CNNconv1): Conv1d(16, 64, kernel_size=(10,), stride=(1,))
+  (CNNconv2): Conv1d(64, 32, kernel_size=(10,), stride=(1,))
+  (CNNconv3): Conv1d(32, 16, kernel_size=(10,), stride=(1,))
+  (avg_pool): AvgPool1d(kernel_size=(2,), stride=(2,), padding=(0,))
+  (fc1): Linear(in_features=384, out_features=8192, bias=True)
+  (fc2): Linear(in_features=8192, out_features=1, bias=True)
+  (dropout): Dropout(p=0.1, inplace=False)
+)
+Parameters:  3210081
+Epoch 1/100, Loss: 62.9293
+Epoch 2/100, Loss: 1.6269
+Epoch 3/100, Loss: 0.6458
+Epoch 4/100, Loss: 0.5549
+Epoch 5/100, Loss: 0.5670
+Epoch 6/100, Loss: 0.5644
+Epoch 7/100, Loss: 0.5652
+Epoch 8/100, Loss: 0.5655
+Epoch 9/100, Loss: 0.5692
+Epoch 10/100, Loss: 0.5610
+Epoch 11/100, Loss: 0.5567
+Epoch 12/100, Loss: 0.5665
+Epoch 13/100, Loss: 0.5699
+Epoch 14/100, Loss: 0.5684
+Epoch 15/100, Loss: 0.5669
+Epoch 16/100, Loss: 0.5662
+Epoch 17/100, Loss: 0.5645
+Epoch 18/100, Loss: 0.5635
+Epoch 19/100, Loss: 0.5649
+Epoch 20/100, Loss: 0.5664
+Epoch 21/100, Loss: 0.5585
+Epoch 22/100, Loss: 0.5572
+Epoch 23/100, Loss: 0.5537
+Epoch 24/100, Loss: 0.5588
+Epoch 25/100, Loss: 0.5594
+Epoch 26/100, Loss: 0.5554
+Epoch 27/100, Loss: 0.5631
+Epoch 28/100, Loss: 0.5569
+Epoch 29/100, Loss: 0.5594
+Epoch 30/100, Loss: 0.5569
+Epoch 31/100, Loss: 0.5536
+Epoch 32/100, Loss: 0.5500
+Epoch 33/100, Loss: 0.5388
+Epoch 34/100, Loss: 0.5378
+Epoch 35/100, Loss: 0.5286
+Epoch 36/100, Loss: 0.5056
+Epoch 37/100, Loss: 0.4463
+Epoch 38/100, Loss: 0.4017
+Epoch 39/100, Loss: 0.3603
+Epoch 40/100, Loss: 0.2929
+Epoch 41/100, Loss: 0.2418
+Epoch 42/100, Loss: 0.2088
+Epoch 43/100, Loss: 0.2035
+Epoch 44/100, Loss: 0.1681
+Epoch 45/100, Loss: 0.1581
+Epoch 46/100, Loss: 0.1509
+Epoch 47/100, Loss: 0.1379
+Epoch 48/100, Loss: 0.1239
+Epoch 49/100, Loss: 0.1207
+Epoch 50/100, Loss: 0.1106
+Epoch 51/100, Loss: 0.1077
+Epoch 52/100, Loss: 0.1021
+Epoch 53/100, Loss: 0.0986
+Epoch 54/100, Loss: 0.0930
+Epoch 55/100, Loss: 0.0844
+Epoch 56/100, Loss: 0.0851
+Epoch 57/100, Loss: 0.0842
+Epoch 58/100, Loss: 0.0792
+Epoch 59/100, Loss: 0.0780
+Epoch 60/100, Loss: 0.0708
+Epoch 61/100, Loss: 0.0693
+Epoch 62/100, Loss: 0.0684
+Epoch 63/100, Loss: 0.0641
+Epoch 64/100, Loss: 0.0623
+Epoch 65/100, Loss: 0.0602
+Epoch 66/100, Loss: 0.0623
+Epoch 67/100, Loss: 0.0612
+Epoch 68/100, Loss: 0.0590
+Epoch 69/100, Loss: 0.0575
+Epoch 70/100, Loss: 0.0574
+Epoch 71/100, Loss: 0.0536
+Epoch 72/100, Loss: 0.0534
+Epoch 73/100, Loss: 0.0554
+Epoch 74/100, Loss: 0.0525
+Epoch 75/100, Loss: 0.0500
+Epoch 76/100, Loss: 0.0500
+Epoch 77/100, Loss: 0.0514
+Epoch 78/100, Loss: 0.0475
+Epoch 79/100, Loss: 0.0467
+Epoch 80/100, Loss: 0.0452
+Epoch 81/100, Loss: 0.0486
+Epoch 82/100, Loss: 0.0463
+Epoch 83/100, Loss: 0.0419
+Epoch 84/100, Loss: 0.0426
+Epoch 85/100, Loss: 0.0449
+Epoch 86/100, Loss: 0.0433
+Epoch 87/100, Loss: 0.0409
+Epoch 88/100, Loss: 0.0427
+Epoch 89/100, Loss: 0.0402
+Epoch 90/100, Loss: 0.0411
+Epoch 91/100, Loss: 0.0404
+Epoch 92/100, Loss: 0.0381
+Epoch 93/100, Loss: 0.0372
+Epoch 94/100, Loss: 0.0378
+Epoch 95/100, Loss: 0.0381
+Epoch 96/100, Loss: 0.0388
+Epoch 97/100, Loss: 0.0365
+Epoch 98/100, Loss: 0.0353
+Epoch 99/100, Loss: 0.0338
+Epoch 100/100, Loss: 0.0347
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m plotly is required to log interactive plots, install with: `pip install plotly` or convert the plot to an image with `wandb.Image(plt)`
+Traceback (most recent call last):
+  File "C:\Users\ediso\MISL\structure_to_signal\model.py", line 279, in <module>
+    plot_loss_over_epochs(train_losses, epochs)
+  File "C:\Users\ediso\MISL\structure_to_signal\model.py", line 46, in plot_loss_over_epochs
+    wandb.log({"Loss Over Epochs": wandb.Plotly(plt)})
+                                   ^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\data_types\plotly.py", line 63, in __init__
+    val = util.matplotlib_to_plotly(val)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\util.py", line 501, in matplotlib_to_plotly
+    tools = get_module(
+            ^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\util.py", line 264, in get_module
+    raise wandb.Error(required)
+wandb.errors.Error: plotly is required to log interactive plots, install with: `pip install plotly` or convert the plot to an image with `wandb.Image(plt)`

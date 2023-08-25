@@ -4,14 +4,25 @@ from torch_geometric.nn import GCNConv, GraphConv, GATConv
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import global_mean_pool as gap, global_max_pool as gmp
 import torch.nn.functional as F
-from dataset import DatasetLoader
+# from dataset import DatasetLoader
 import os, glob
 from matplotlib import pyplot as plt
+import matplotlib
 import numpy as np
 from torch_geometric.nn import MessagePassing
 from torch_geometric.utils import degree
 import random
 from sklearn.metrics import mean_squared_error
+import wandb
+
+
+from torch_geometric.graphgym.config import (
+    cfg,
+    dump_cfg,
+    load_cfg,
+    set_out_dir,
+    set_run_dir,
+)
 
 class MeanSquaredLogError(nn.Module):
     def __init__(self):
@@ -29,7 +40,7 @@ def plot_true_vs_predicted(true_values, predicted_values):
     plt.ylabel('Predicted Values')
     plt.title('True vs. Predicted Values')
     plt.grid()
-    plt.show()
+    wandb.log({"True vs. Predicted Values": wandb.Image(plt)})
 
 def plot_loss_over_epochs(losses, epochs):
     plt.figure(figsize=(10, 6))
@@ -40,10 +51,10 @@ def plot_loss_over_epochs(losses, epochs):
     # plt.title('Loss Over Epochs (Log Scale)')
     plt.title('Loss Over Epochs')
     plt.grid()
-    plt.show()
+    wandb.log({"Loss Over Epochs": wandb.Image(plt)})
 
 def load_data(file_path):
-    file_list = glob.glob('data3/processed/data_*')
+    file_list = glob.glob('data/processed/data_*')
     data_list = [torch.load(f) for f in file_list]
     return data_list
 
@@ -105,6 +116,8 @@ def train(model, train_loader, optimizer, criterion, epochs):
             epoch_loss += loss.item()
         losses.append(epoch_loss)
         print(f'Epoch {epoch+1}/{epochs}, Loss: {epoch_loss:.4f}')
+        wandb.log({"epoch" : epoch,
+                   "train/loss": loss})
     return losses
 
 def test(model, test_loader, criterion):
@@ -233,17 +246,31 @@ class GNN2(nn.Module):
 
 # Main
 # ___________________________________________________________________________________
+wandb.init(
+    project="MISL Structure to Signal",
+    config={
+        "epochs": 8,
+        "lr": 0.001,
+        "data": "data/processed/",
+        "train_split_size": 0.8,
+        "batch_size": 128
+    }
+)
 
+num_epochs = wandb.config['epochs']
+file_path = wandb.config['data']
+train_split_size = wandb.config['train_split_size']
+batch_size = wandb.config['batch_size']
+lr = wandb.config['lr']
 # load and process data
-file_path = 'data3/processed/'
 data_list = load_data(file_path)
 random.shuffle(data_list)
 
-train_examples, test_examples = train_test_split(data_list, 0.8)
+train_examples, test_examples = train_test_split(data_list, train_split_size)
 # scaled_train, scaled_test = min_max_scale(train_examples, test_examples)
 # normalized_train, noramlized_test, target_mean, target_std = noramlize(train_examples, test_examples)
 # train_loader, test_loader = create_data_loaders(normalized_train, noramlized_test, batch=128)
-train_loader, test_loader = create_data_loaders(train_examples, test_examples, batch=128)
+train_loader, test_loader = create_data_loaders(train_examples, test_examples, batch=batch_size)
 
 # load model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -253,15 +280,14 @@ print(model)
 print("Parameters: ", sum(p.numel() for p in model.parameters()))
 
 # define optimizer and loss function
-optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 # criterion = nn.MSELoss()
 criterion = MeanSquaredLogError()
 
 # train model
-epochs = 100
-train_losses = train(model, train_loader, optimizer, criterion, epochs)
-plot_loss_over_epochs(train_losses, epochs)
-plot_logloss_over_epochs(train_losses, epochs)
+train_losses = train(model, train_loader, optimizer, criterion, num_epochs)
+plot_loss_over_epochs(train_losses, num_epochs)
+# plot_logloss_over_epochs(train_losses, epochs)
 
 # test model
 tst_losses, true_values, predicted_values = test(model, test_loader, criterion)

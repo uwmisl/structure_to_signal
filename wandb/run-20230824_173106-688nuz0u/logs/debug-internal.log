@@ -1,0 +1,1038 @@
+2023-08-24 17:31:06,628 INFO    StreamThr :15580 [internal.py:wandb_internal():86] W&B internal server running at pid: 15580, started at: 2023-08-24 17:31:06.628267
+2023-08-24 17:31:06,630 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status
+2023-08-24 17:31:06,635 INFO    WriterThread:15580 [datastore.py:open_for_write():85] open: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\run-688nuz0u.wandb
+2023-08-24 17:31:06,636 DEBUG   SenderThread:15580 [sender.py:send():379] send: header
+2023-08-24 17:31:06,684 DEBUG   SenderThread:15580 [sender.py:send():379] send: run
+2023-08-24 17:31:07,049 INFO    SenderThread:15580 [dir_watcher.py:__init__():211] watching files in: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files
+2023-08-24 17:31:07,049 INFO    SenderThread:15580 [sender.py:_start_run_threads():1121] run started: 688nuz0u with start time 1692923466.631269
+2023-08-24 17:31:07,049 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:07,050 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:07,059 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: check_version
+2023-08-24 17:31:07,060 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: check_version
+2023-08-24 17:31:07,189 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: run_start
+2023-08-24 17:31:07,219 DEBUG   HandlerThread:15580 [system_info.py:__init__():31] System info init
+2023-08-24 17:31:07,220 DEBUG   HandlerThread:15580 [system_info.py:__init__():46] System info init done
+2023-08-24 17:31:07,220 INFO    HandlerThread:15580 [system_monitor.py:start():181] Starting system monitor
+2023-08-24 17:31:07,220 INFO    SystemMonitor:15580 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-08-24 17:31:07,220 INFO    HandlerThread:15580 [system_monitor.py:probe():201] Collecting system info
+2023-08-24 17:31:07,228 INFO    SystemMonitor:15580 [interfaces.py:start():190] Started cpu monitoring
+2023-08-24 17:31:07,228 INFO    SystemMonitor:15580 [interfaces.py:start():190] Started disk monitoring
+2023-08-24 17:31:07,229 INFO    SystemMonitor:15580 [interfaces.py:start():190] Started gpu monitoring
+2023-08-24 17:31:07,242 INFO    SystemMonitor:15580 [interfaces.py:start():190] Started memory monitoring
+2023-08-24 17:31:07,257 INFO    SystemMonitor:15580 [interfaces.py:start():190] Started network monitoring
+2023-08-24 17:31:07,270 DEBUG   HandlerThread:15580 [system_info.py:probe():195] Probing system
+2023-08-24 17:31:07,271 DEBUG   HandlerThread:15580 [system_info.py:_probe_git():180] Probing git
+2023-08-24 17:31:07,276 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:07,355 DEBUG   HandlerThread:15580 [system_info.py:_probe_git():188] Probing git done
+2023-08-24 17:31:07,355 DEBUG   HandlerThread:15580 [system_info.py:probe():240] Probing system done
+2023-08-24 17:31:07,355 DEBUG   HandlerThread:15580 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.22621-SP0', 'python': '3.11.0', 'heartbeatAt': '2023-08-25T00:31:07.270464', 'startedAt': '2023-08-25T00:31:06.609271', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'C:\\Users\\ediso\\MISL\\structure_to_signal\\model.py', 'codePath': 'model.py', 'git': {'remote': 'https://github.com/uwmisl/structure_to_signal.git', 'commit': 'ff013736f0672b044e3bd81a649a490ef11c122e'}, 'email': 'edleung@cs.washington.edu', 'root': 'C:/Users/ediso/MISL/structure_to_signal', 'host': 'DESKTOP-2SITI38', 'username': 'ediso', 'executable': 'C:\\Python311\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 2592.0, 'min': 0.0, 'max': 2592.0}, 'cpu_freq_per_core': [{'current': 2592.0, 'min': 0.0, 'max': 2592.0}], 'disk': {'total': 952.5976524353027, 'used': 421.24437713623047}, 'gpu': 'NVIDIA GeForce GTX 1650 Ti with Max-Q Design', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1650 Ti with Max-Q Design', 'memory_total': 4294967296}], 'memory': {'total': 15.709590911865234}}
+2023-08-24 17:31:07,355 INFO    HandlerThread:15580 [system_monitor.py:probe():211] Finished collecting system info
+2023-08-24 17:31:07,355 INFO    HandlerThread:15580 [system_monitor.py:probe():214] Publishing system info
+2023-08-24 17:31:07,355 DEBUG   HandlerThread:15580 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-08-24 17:31:07,356 DEBUG   HandlerThread:15580 [system_info.py:_save_pip():67] Saving pip packages done
+2023-08-24 17:31:07,357 INFO    HandlerThread:15580 [system_monitor.py:probe():216] Finished publishing system info
+2023-08-24 17:31:07,363 DEBUG   SenderThread:15580 [sender.py:send():379] send: files
+2023-08-24 17:31:07,363 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-metadata.json with policy now
+2023-08-24 17:31:07,370 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:31:07,371 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:31:07,590 DEBUG   SenderThread:15580 [sender.py:send():379] send: telemetry
+2023-08-24 17:31:07,821 INFO    wandb-upload_0:15580 [upload_job.py:push():131] Uploaded file C:\Users\ediso\AppData\Local\Temp\tmpeccj7e51wandb\2gqix4op-wandb-metadata.json
+2023-08-24 17:31:08,059 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:08,059 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\requirements.txt
+2023-08-24 17:31:08,060 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-metadata.json
+2023-08-24 17:31:09,294 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:10,068 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:11,332 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:12,095 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:12,249 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:13,356 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:15,377 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:16,057 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:16,057 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:16,057 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:16,058 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:16,136 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:17,402 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:18,063 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:18,143 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:18,930 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:18,930 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:18,931 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:18,931 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:19,150 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:19,412 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:20,162 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:21,437 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:21,787 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:21,789 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:21,789 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:21,791 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:22,171 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:22,376 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:31:22,377 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:31:23,460 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:23,498 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:24,190 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:24,687 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:24,687 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:24,688 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:24,689 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:25,197 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:25,492 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:26,203 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:27,509 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:27,617 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:27,617 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:27,617 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:27,618 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:28,217 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:28,625 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:29,532 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:30,234 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:30,513 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:30,514 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:30,514 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:30,515 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:31,240 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:31,557 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:32,249 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:33,435 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:33,435 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:33,435 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:33,436 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:33,591 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:34,272 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:34,272 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:34,447 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:35,610 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:36,345 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:36,345 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:36,345 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:36,347 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:37,301 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:37,396 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:31:37,397 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:31:37,703 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:38,314 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:39,265 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:39,266 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:39,266 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:39,267 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:39,326 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:39,734 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:40,277 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:40,338 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:41,341 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\config.yaml
+2023-08-24 17:31:41,763 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:42,400 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:42,401 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:42,401 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:42,402 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:43,364 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:43,783 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:44,371 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:45,482 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:45,483 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:45,484 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:45,484 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:45,487 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:45,829 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:46,396 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:46,397 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:47,902 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:48,619 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:48,620 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:48,621 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:48,622 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:49,414 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:49,919 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:50,426 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:50,644 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:51,626 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:51,627 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:51,627 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:51,628 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:51,957 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:52,437 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:31:52,437 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:31:52,441 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:53,988 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:54,458 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:54,607 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:54,607 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:54,607 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:54,608 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:55,472 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:31:56,009 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:56,483 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:56,625 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:31:57,562 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:31:57,563 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:31:57,563 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:31:57,564 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:31:58,035 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:31:58,498 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:31:58,498 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:00,068 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:00,493 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:00,494 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:00,494 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:00,496 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:00,511 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:02,087 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:02,516 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:02,532 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:03,460 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:03,461 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:03,461 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:03,463 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:03,538 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:04,116 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:04,547 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:06,148 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:06,429 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:06,429 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:06,430 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:06,431 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:06,562 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:07,266 DEBUG   SystemMonitor:15580 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-08-24 17:32:07,267 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:32:07,484 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:32:07,484 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:32:07,583 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:08,331 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:08,572 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:09,551 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:09,552 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:09,552 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:09,554 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:09,579 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:10,350 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:10,589 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:12,367 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:12,484 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:12,485 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:12,485 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:12,486 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:12,606 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:13,486 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:14,383 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:14,625 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:15,466 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:15,467 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:15,467 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:15,469 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:15,626 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:16,401 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:16,638 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:18,431 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:18,501 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:18,589 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:18,590 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:18,590 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:18,594 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:18,658 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:20,455 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:20,676 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:21,701 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:21,702 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:21,702 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:21,703 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:22,481 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:22,507 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:32:22,507 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:32:22,693 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:23,671 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:24,502 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:24,669 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:24,669 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:24,669 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:24,670 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:24,711 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:24,711 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:26,515 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:26,728 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:27,581 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:27,581 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:27,582 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:27,582 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:27,740 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:28,534 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:28,746 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:29,592 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:30,518 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:30,520 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:30,521 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:30,524 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:30,561 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:30,751 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:32,595 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:32,775 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:33,632 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:33,633 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:33,633 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:33,634 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:33,784 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:34,620 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:34,637 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:34,796 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:36,646 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:36,662 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:36,663 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:36,663 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:36,665 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:36,813 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:37,273 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:32:37,509 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:32:37,509 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:32:38,743 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:38,833 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:39,637 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:39,637 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:39,637 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:39,638 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:39,639 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:39,836 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:40,758 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:40,841 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:42,581 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:42,582 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:42,582 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:42,584 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:42,779 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:42,858 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:44,792 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:44,875 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:45,539 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:45,539 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:45,540 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:45,540 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:45,541 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:45,886 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:46,812 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:46,891 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:48,625 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:48,626 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:48,626 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:48,627 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:48,835 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:48,909 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:50,644 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:50,859 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:50,927 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:51,693 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:51,693 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:51,694 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:51,695 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:51,931 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:52,528 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:32:52,529 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:32:52,883 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:52,934 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:54,699 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:54,700 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:54,700 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:54,702 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:54,907 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:54,951 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:55,708 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:32:56,935 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:56,969 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:32:57,676 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:32:57,677 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:32:57,678 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:32:57,679 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:32:57,973 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:32:58,958 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:32:58,975 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:00,666 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:00,667 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:00,667 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:00,668 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:00,970 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:00,991 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:01,684 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:02,990 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:03,009 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:03,612 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:03,612 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:03,613 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:03,614 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:04,013 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:05,015 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:05,021 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:06,550 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:06,550 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:06,552 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:06,553 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:07,027 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:07,032 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:07,284 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:33:07,285 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:07,585 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:33:07,586 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:33:09,091 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:09,111 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:09,485 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:09,486 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:09,486 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:09,487 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:10,095 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:11,107 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:11,140 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:12,505 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:12,612 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:12,612 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:12,612 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:12,613 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:13,132 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:13,157 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:14,142 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:15,176 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:15,596 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:15,598 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:15,598 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:15,599 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:16,147 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:16,148 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:17,202 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:17,610 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:18,664 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:18,665 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:18,665 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:18,667 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:19,166 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:19,222 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:20,169 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:21,248 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:21,764 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:21,764 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:21,765 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:21,766 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:22,213 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:22,591 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:33:22,591 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:33:22,707 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:23,272 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:24,241 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:24,811 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:24,812 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:24,812 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:24,814 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:25,277 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:25,294 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:26,293 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:27,318 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:27,850 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:27,881 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:27,881 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:27,881 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:27,882 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:28,310 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:29,332 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:30,336 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:30,821 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:30,822 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:30,822 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:30,823 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:31,340 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:31,351 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:32,354 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:32,851 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:33,381 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:33,824 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:33,825 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:33,825 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:33,828 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:34,379 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:35,399 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:36,400 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:36,826 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:36,826 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:36,827 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:36,828 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:37,287 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:33:37,427 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:37,449 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:37,662 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:33:37,663 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:33:37,863 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:38,435 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:39,531 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:39,839 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:39,839 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:39,840 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:39,841 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:40,446 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:41,545 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:42,480 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:42,766 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:42,766 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:42,766 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:42,767 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:43,490 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:43,564 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:43,772 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:44,498 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:45,590 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:45,781 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:45,782 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:45,782 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:45,784 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:46,541 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:47,609 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:48,553 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:48,746 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:48,746 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:48,746 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:48,747 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:49,579 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:49,637 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:49,763 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:50,584 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:51,660 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:51,680 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:51,682 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:51,682 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:51,683 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:52,618 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:52,619 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:52,682 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:33:52,683 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:33:53,685 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:54,777 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:33:54,778 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:54,778 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:54,779 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:54,780 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:55,657 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:55,698 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:56,659 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:33:57,718 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:57,777 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:33:57,778 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:33:57,778 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:33:57,779 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:33:58,701 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:33:59,779 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:33:59,802 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:00,757 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:00,964 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:00,965 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:00,965 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:00,966 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:01,768 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:01,798 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:02,783 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:03,810 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:03,911 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:03,911 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:03,911 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:03,912 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:04,787 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:04,918 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:05,834 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:06,820 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:06,897 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:06,898 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:06,898 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:06,899 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:07,300 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:34:07,710 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:34:07,711 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:34:07,835 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:07,847 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:08,837 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:09,876 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:09,887 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:09,888 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:09,912 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:09,923 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:09,924 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:09,947 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:11,971 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:12,890 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:12,891 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:12,891 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:12,892 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:12,942 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:12,942 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:13,996 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:14,959 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:15,866 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:15,867 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:15,868 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:15,868 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:15,870 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:15,965 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:16,025 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:18,053 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:18,942 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:18,943 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:18,943 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:18,945 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:19,002 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:19,002 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:20,075 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:20,963 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:21,015 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:21,965 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:21,966 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:21,966 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:21,967 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:22,031 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:22,112 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:22,788 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:34:22,789 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:34:24,141 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:24,930 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:24,930 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:24,930 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:24,930 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:25,062 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:25,063 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:26,147 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:26,960 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:27,097 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:27,893 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:27,894 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:27,894 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:27,895 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:28,108 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:28,176 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:30,145 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:30,200 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:31,053 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:31,054 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:31,054 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:31,056 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:31,153 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:32,071 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:32,168 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:32,229 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:34,157 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:34,157 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:34,158 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:34,159 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:34,195 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:34,254 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:36,215 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:36,276 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:37,112 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:37,112 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:37,113 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:37,113 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:37,114 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:37,223 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:37,307 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:34:37,802 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:34:37,802 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:34:38,244 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:38,291 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:40,074 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:40,075 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:40,075 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:40,076 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:40,272 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:40,383 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:42,294 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:42,406 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:43,058 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:43,058 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:43,059 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:43,059 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:43,061 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:43,295 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:44,332 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:44,441 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:46,145 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:46,146 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:46,146 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:46,148 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:46,362 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:46,464 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:48,168 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:48,390 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:48,477 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:49,157 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:49,158 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:49,158 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:49,159 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:49,398 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:50,414 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:50,502 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:52,107 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:52,107 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:52,107 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:52,108 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:52,436 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:52,522 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:52,821 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:34:52,822 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:34:53,945 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:34:54,472 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:54,540 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:55,105 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:55,130 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:55,131 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:55,132 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:55,483 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:56,502 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:34:56,567 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:58,137 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:34:58,137 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:34:58,137 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:34:58,138 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:34:58,530 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:34:58,586 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:34:59,145 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:00,552 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:00,614 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:01,101 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:01,101 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:01,101 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:01,103 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:01,566 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:02,580 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:02,638 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:04,087 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:04,088 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:04,088 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:04,089 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:04,610 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:04,675 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:05,096 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:06,636 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:06,700 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:07,096 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:07,096 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:07,096 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:07,096 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:07,331 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:35:07,638 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:07,908 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:35:07,908 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:35:08,666 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:08,715 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:10,113 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:10,114 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:10,114 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:10,115 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:10,116 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:10,714 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:10,878 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:12,757 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:12,922 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:13,386 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:13,387 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:13,388 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:13,390 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:13,768 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:14,790 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:14,954 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:15,409 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:16,596 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:16,597 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:16,597 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:16,601 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:16,820 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:16,984 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:18,849 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:19,004 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:19,705 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:19,705 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:19,706 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:19,707 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:19,855 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:20,708 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:20,873 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:21,026 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:22,765 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:22,765 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:22,767 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:22,768 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:22,910 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:22,926 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:35:22,927 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:35:23,052 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:24,951 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:25,073 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:25,890 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:25,890 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:25,891 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:25,891 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:25,892 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:25,954 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:27,098 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:28,910 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:28,911 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:28,911 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:28,912 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:29,005 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:29,006 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:29,113 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:30,930 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:31,030 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:31,140 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:31,880 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:31,880 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:31,880 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:31,880 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:32,047 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:33,159 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:34,850 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:34,850 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:34,850 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:34,852 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:35,088 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:35,089 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:35,186 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:36,859 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:37,123 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:37,215 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:37,337 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:35:37,957 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:35:37,958 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:35:37,958 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:38,066 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:38,067 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:38,068 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:38,137 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:39,236 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:41,094 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:41,095 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:41,095 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:41,096 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:41,192 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:41,193 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:41,331 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:42,112 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:42,210 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:43,344 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:44,083 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:44,084 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:44,084 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:44,085 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:44,224 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:45,376 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:46,250 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:47,131 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:47,131 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:47,132 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:47,132 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:47,133 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:47,264 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:47,392 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:48,268 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:49,416 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:50,159 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:50,160 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:50,160 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:50,162 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:50,306 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:51,431 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:52,184 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:52,324 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:52,992 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:35:52,992 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:35:53,189 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:53,189 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:53,189 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:53,190 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:53,347 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:53,450 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:54,355 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:55,473 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:56,213 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:56,214 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:56,214 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:56,217 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:56,390 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:57,222 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:35:57,499 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:35:58,410 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:35:59,220 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:35:59,220 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:35:59,220 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:35:59,221 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:35:59,426 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:35:59,524 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:00,438 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:36:01,551 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:02,232 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:36:02,354 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:36:02,355 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:36:02,355 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:36:02,357 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:36:02,470 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:36:03,597 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:04,512 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:36:05,433 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:36:05,433 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:36:05,434 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:36:05,435 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:36:05,525 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:36:05,610 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:06,540 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:36:07,341 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:36:07,341 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:36:07,626 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:07,996 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-24 17:36:07,997 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: stop_status
+2023-08-24 17:36:08,428 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:36:08,429 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:36:08,429 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:36:08,431 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:36:08,556 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:36:09,650 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:10,598 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:36:11,547 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:36:11,548 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:36:11,548 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:36:11,549 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:36:11,629 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:36:11,768 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:12,563 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:36:12,635 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:36:13,785 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:14,514 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-24 17:36:14,516 DEBUG   SenderThread:15580 [sender.py:send():379] send: history
+2023-08-24 17:36:14,516 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: summary_record
+2023-08-24 17:36:14,516 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:36:14,660 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:36:15,811 ERROR   gpu       :15580 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-24 17:36:16,667 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:36:16,796 DEBUG   SenderThread:15580 [sender.py:send():379] send: exit
+2023-08-24 17:36:16,796 INFO    SenderThread:15580 [sender.py:send_exit():584] handling exit code: 1
+2023-08-24 17:36:16,796 INFO    SenderThread:15580 [sender.py:send_exit():586] handling runtime: 309
+2023-08-24 17:36:16,797 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:36:16,798 INFO    SenderThread:15580 [sender.py:send_exit():592] send defer
+2023-08-24 17:36:16,798 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:16,798 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 0
+2023-08-24 17:36:16,798 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:16,798 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 0
+2023-08-24 17:36:16,798 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 1
+2023-08-24 17:36:16,798 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:16,799 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 1
+2023-08-24 17:36:16,799 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:16,799 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 1
+2023-08-24 17:36:16,799 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 2
+2023-08-24 17:36:16,799 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:16,799 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 2
+2023-08-24 17:36:16,799 INFO    HandlerThread:15580 [system_monitor.py:finish():190] Stopping system monitor
+2023-08-24 17:36:16,799 DEBUG   SystemMonitor:15580 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-08-24 17:36:16,800 DEBUG   SystemMonitor:15580 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-08-24 17:36:16,815 INFO    HandlerThread:15580 [interfaces.py:finish():202] Joined cpu monitor
+2023-08-24 17:36:16,815 INFO    HandlerThread:15580 [interfaces.py:finish():202] Joined disk monitor
+2023-08-24 17:36:16,884 INFO    HandlerThread:15580 [interfaces.py:finish():202] Joined gpu monitor
+2023-08-24 17:36:16,884 INFO    HandlerThread:15580 [interfaces.py:finish():202] Joined memory monitor
+2023-08-24 17:36:16,884 INFO    HandlerThread:15580 [interfaces.py:finish():202] Joined network monitor
+2023-08-24 17:36:16,885 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:16,885 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 2
+2023-08-24 17:36:16,885 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 3
+2023-08-24 17:36:16,885 DEBUG   SenderThread:15580 [sender.py:send():379] send: stats
+2023-08-24 17:36:16,886 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:16,886 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 3
+2023-08-24 17:36:16,886 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:16,886 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 3
+2023-08-24 17:36:16,886 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 4
+2023-08-24 17:36:16,886 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:16,887 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 4
+2023-08-24 17:36:16,887 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:16,887 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 4
+2023-08-24 17:36:16,887 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 5
+2023-08-24 17:36:16,887 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:16,887 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 5
+2023-08-24 17:36:16,888 DEBUG   SenderThread:15580 [sender.py:send():379] send: summary
+2023-08-24 17:36:16,888 INFO    SenderThread:15580 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-24 17:36:16,889 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:16,889 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 5
+2023-08-24 17:36:16,889 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 6
+2023-08-24 17:36:16,889 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:16,889 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 6
+2023-08-24 17:36:16,889 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:16,889 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 6
+2023-08-24 17:36:16,890 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 7
+2023-08-24 17:36:16,890 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: status_report
+2023-08-24 17:36:16,890 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:16,890 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 7
+2023-08-24 17:36:16,890 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:16,890 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 7
+2023-08-24 17:36:17,669 INFO    Thread-16 :15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:36:17,801 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-24 17:36:18,803 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 8
+2023-08-24 17:36:18,805 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: poll_exit
+2023-08-24 17:36:18,805 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:18,805 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 8
+2023-08-24 17:36:18,806 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:18,806 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 8
+2023-08-24 17:36:18,807 INFO    SenderThread:15580 [job_builder.py:build():281] Attempting to build job artifact
+2023-08-24 17:36:18,808 INFO    SenderThread:15580 [job_builder.py:_get_source_type():400] is repo sourced job
+2023-08-24 17:36:18,817 INFO    SenderThread:15580 [job_builder.py:build():374] adding wandb-job metadata file
+2023-08-24 17:36:18,830 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 9
+2023-08-24 17:36:18,830 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:18,831 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 9
+2023-08-24 17:36:18,831 DEBUG   SenderThread:15580 [sender.py:send():379] send: artifact
+2023-08-24 17:36:19,290 INFO    SenderThread:15580 [sender.py:send_artifact():1475] sent artifact job-https___github.com_uwmisl_structure_to_signal.git_model.py - {'id': 'QXJ0aWZhY3Q6NTUwNzQwNTg1', 'digest': 'dd91fe2a39b8a4a97826f8982fef2e4d', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_uwmisl_structure_to_signal.git_model.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_uwmisl_structure_to_signal.git_model.py', 'alias': 'v2'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjkyNjc5NDIx', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NTUwNzQyNzU2', 'versionIndex': 3}}, 'version': 'v2'}
+2023-08-24 17:36:19,290 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:19,290 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 9
+2023-08-24 17:36:19,290 INFO    SenderThread:15580 [dir_watcher.py:finish():358] shutting down directory watcher
+2023-08-24 17:36:19,691 INFO    SenderThread:15580 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:36:19,691 INFO    SenderThread:15580 [dir_watcher.py:finish():388] scan: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files
+2023-08-24 17:36:19,692 INFO    SenderThread:15580 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\config.yaml config.yaml
+2023-08-24 17:36:19,693 INFO    SenderThread:15580 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log output.log
+2023-08-24 17:36:19,695 INFO    SenderThread:15580 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\requirements.txt requirements.txt
+2023-08-24 17:36:19,697 INFO    SenderThread:15580 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-metadata.json wandb-metadata.json
+2023-08-24 17:36:19,698 INFO    SenderThread:15580 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json wandb-summary.json
+2023-08-24 17:36:19,701 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 10
+2023-08-24 17:36:19,701 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:19,702 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 10
+2023-08-24 17:36:19,705 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:19,705 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 10
+2023-08-24 17:36:19,705 INFO    SenderThread:15580 [file_pusher.py:finish():159] shutting down file pusher
+2023-08-24 17:36:19,996 INFO    wandb-upload_0:15580 [upload_job.py:push():131] Uploaded file C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\config.yaml
+2023-08-24 17:36:20,040 INFO    wandb-upload_1:15580 [upload_job.py:push():131] Uploaded file C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\output.log
+2023-08-24 17:36:20,112 INFO    wandb-upload_3:15580 [upload_job.py:push():131] Uploaded file C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\wandb-summary.json
+2023-08-24 17:36:20,271 INFO    wandb-upload_2:15580 [upload_job.py:push():131] Uploaded file C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\files\requirements.txt
+2023-08-24 17:36:20,484 INFO    Thread-15 (_thread_body):15580 [sender.py:transition_state():612] send defer: 11
+2023-08-24 17:36:20,484 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:20,485 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 11
+2023-08-24 17:36:20,485 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:20,485 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 11
+2023-08-24 17:36:20,485 INFO    SenderThread:15580 [file_pusher.py:join():164] waiting for file pusher
+2023-08-24 17:36:20,485 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 12
+2023-08-24 17:36:20,485 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:20,485 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 12
+2023-08-24 17:36:20,486 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:20,486 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 12
+2023-08-24 17:36:20,486 INFO    SenderThread:15580 [file_stream.py:finish():593] file stream finish called
+2023-08-24 17:36:20,908 INFO    SenderThread:15580 [file_stream.py:finish():597] file stream finish is done
+2023-08-24 17:36:20,908 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 13
+2023-08-24 17:36:20,908 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:20,908 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 13
+2023-08-24 17:36:20,909 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:20,909 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 13
+2023-08-24 17:36:20,909 INFO    SenderThread:15580 [sender.py:transition_state():612] send defer: 14
+2023-08-24 17:36:20,909 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: defer
+2023-08-24 17:36:20,909 INFO    HandlerThread:15580 [handler.py:handle_request_defer():170] handle defer: 14
+2023-08-24 17:36:20,909 DEBUG   SenderThread:15580 [sender.py:send():379] send: final
+2023-08-24 17:36:20,909 DEBUG   SenderThread:15580 [sender.py:send():379] send: footer
+2023-08-24 17:36:20,909 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: defer
+2023-08-24 17:36:20,909 INFO    SenderThread:15580 [sender.py:send_request_defer():608] handle sender defer: 14
+2023-08-24 17:36:20,910 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-24 17:36:20,910 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: server_info
+2023-08-24 17:36:20,910 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: get_summary
+2023-08-24 17:36:20,910 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: poll_exit
+2023-08-24 17:36:20,910 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: sampled_history
+2023-08-24 17:36:20,910 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: server_info
+2023-08-24 17:36:20,911 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: job_info
+2023-08-24 17:36:20,982 DEBUG   SenderThread:15580 [sender.py:send_request():406] send_request: job_info
+2023-08-24 17:36:20,982 INFO    MainThread:15580 [wandb_run.py:_footer_history_summary_info():3481] rendering history
+2023-08-24 17:36:20,982 INFO    MainThread:15580 [wandb_run.py:_footer_history_summary_info():3513] rendering summary
+2023-08-24 17:36:20,984 INFO    MainThread:15580 [wandb_run.py:_footer_sync_info():3440] logging synced files
+2023-08-24 17:36:20,985 DEBUG   HandlerThread:15580 [handler.py:handle_request():144] handle_request: shutdown
+2023-08-24 17:36:20,985 INFO    HandlerThread:15580 [handler.py:finish():857] shutting down handler
+2023-08-24 17:36:21,921 INFO    WriterThread:15580 [datastore.py:close():294] close: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_173106-688nuz0u\run-688nuz0u.wandb
+2023-08-24 17:36:21,983 INFO    SenderThread:15580 [sender.py:finish():1552] shutting down sender
+2023-08-24 17:36:21,983 INFO    SenderThread:15580 [file_pusher.py:finish():159] shutting down file pusher
+2023-08-24 17:36:21,983 INFO    SenderThread:15580 [file_pusher.py:join():164] waiting for file pusher

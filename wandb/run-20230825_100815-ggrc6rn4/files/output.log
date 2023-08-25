@@ -1,0 +1,73 @@
+num training examples:  3276
+num testing examples:  820
+GNN2(
+  (GCNconv1): GCNConv(8, 128)
+  (GCNconv2): GCNConv(128, 64)
+  (GCNconv3): GCNConv(64, 32)
+  (GCNconv4): GCNConv(32, 16)
+  (CNNconv1): Conv1d(16, 64, kernel_size=(10,), stride=(1,))
+  (CNNconv2): Conv1d(64, 32, kernel_size=(10,), stride=(1,))
+  (CNNconv3): Conv1d(32, 16, kernel_size=(10,), stride=(1,))
+  (avg_pool): AvgPool1d(kernel_size=(2,), stride=(2,), padding=(0,))
+  (fc1): Linear(in_features=384, out_features=8192, bias=True)
+  (fc2): Linear(in_features=8192, out_features=1, bias=True)
+  (dropout): Dropout(p=0.1, inplace=False)
+)
+Parameters:  3210081
+Epoch 1/8, Loss: 58.7520
+Epoch 2/8, Loss: 1.4268
+Epoch 3/8, Loss: 0.6190
+Epoch 4/8, Loss: 0.5770
+Epoch 5/8, Loss: 0.5690
+Epoch 6/8, Loss: 0.5714
+Epoch 7/8, Loss: 0.5698
+Epoch 8/8, Loss: 0.5738
+Average Test Loss: 0.0211
+RMSE: 12.8530
+Traceback (most recent call last):
+  File "C:\Users\ediso\MISL\structure_to_signal\model.py", line 285, in <module>
+    plot_true_vs_predicted(true_values, predicted_values)
+  File "C:\Users\ediso\MISL\structure_to_signal\model.py", line 35, in plot_true_vs_predicted
+    wandb.log({"True vs. Predicted Values": plt})
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_run.py", line 390, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_run.py", line 341, in wrapper_fn
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_run.py", line 331, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_run.py", line 1752, in log
+    self._log(data=data, step=step, commit=commit)
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_run.py", line 1527, in _log
+    self._partial_history_callback(data, step, commit)
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_run.py", line 1397, in _partial_history_callback
+    self._backend.interface.publish_partial_history(
+  File "C:\Python311\Lib\site-packages\wandb\sdk\interface\interface.py", line 635, in publish_partial_history
+    data = history_dict_to_json(run, data, step=user_step, ignore_copy_err=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\data_types\utils.py", line 52, in history_dict_to_json
+    payload[key] = val_to_json(
+                   ^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\data_types\utils.py", line 86, in val_to_json
+    val = Plotly.make_plot_media(val)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\data_types\plotly.py", line 49, in make_plot_media
+    val = util.matplotlib_to_plotly(val)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\util.py", line 508, in matplotlib_to_plotly
+    return tools.mpl_to_plotly(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\plotly\tools.py", line 111, in mpl_to_plotly
+    matplotlylib.Exporter(renderer).run(fig)
+  File "C:\Python311\Lib\site-packages\plotly\matplotlylib\mplexporter\exporter.py", line 53, in run
+    self.crawl_fig(fig)
+  File "C:\Python311\Lib\site-packages\plotly\matplotlylib\mplexporter\exporter.py", line 124, in crawl_fig
+    self.crawl_ax(ax)
+  File "C:\Python311\Lib\site-packages\plotly\matplotlylib\mplexporter\exporter.py", line 146, in crawl_ax
+    self.draw_collection(ax, collection)
+  File "C:\Python311\Lib\site-packages\plotly\matplotlylib\mplexporter\exporter.py", line 289, in draw_collection
+    offset_order = offset_dict[collection.get_offset_position()]
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'PathCollection' object has no attribute 'get_offset_position'

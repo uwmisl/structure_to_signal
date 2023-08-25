@@ -1,0 +1,27 @@
+2023-08-24 17:04:29,601 INFO    MainThread:10448 [wandb_setup.py:_flush():76] Current SDK version is 0.15.8
+2023-08-24 17:04:29,602 INFO    MainThread:10448 [wandb_setup.py:_flush():76] Configure stats pid to 10448
+2023-08-24 17:04:29,602 INFO    MainThread:10448 [wandb_setup.py:_flush():76] Loading settings from C:\Users\ediso\.config\wandb\settings
+2023-08-24 17:04:29,602 INFO    MainThread:10448 [wandb_setup.py:_flush():76] Loading settings from C:\Users\ediso\MISL\structure_to_signal\wandb\settings
+2023-08-24 17:04:29,602 INFO    MainThread:10448 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-08-24 17:04:29,602 INFO    MainThread:10448 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-08-24 17:04:29,603 INFO    MainThread:10448 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'model.py', 'program': 'C:\\Users\\ediso\\MISL\\structure_to_signal\\model.py'}
+2023-08-24 17:04:29,603 INFO    MainThread:10448 [wandb_init.py:_log_setup():507] Logging user logs to C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_170429-zjgu6eep\logs\debug.log
+2023-08-24 17:04:29,604 INFO    MainThread:10448 [wandb_init.py:_log_setup():508] Logging internal logs to C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230824_170429-zjgu6eep\logs\debug-internal.log
+2023-08-24 17:04:29,604 INFO    MainThread:10448 [wandb_init.py:init():547] calling init triggers
+2023-08-24 17:04:29,604 INFO    MainThread:10448 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'latent_size': 16, 'lr': 0.01, 'weight_decay': 0.0005, 'epochs': 100}
+2023-08-24 17:04:29,604 INFO    MainThread:10448 [wandb_init.py:init():596] starting backend
+2023-08-24 17:04:29,604 INFO    MainThread:10448 [wandb_init.py:init():600] setting up manager
+2023-08-24 17:04:29,607 INFO    MainThread:10448 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=spawn, using: spawn
+2023-08-24 17:04:29,611 INFO    MainThread:10448 [wandb_init.py:init():606] backend started and connected
+2023-08-24 17:04:29,618 INFO    MainThread:10448 [wandb_init.py:init():697] updated telemetry
+2023-08-24 17:04:29,703 INFO    MainThread:10448 [wandb_init.py:init():730] communicating run to backend with 60.0 second timeout
+2023-08-24 17:04:30,112 INFO    MainThread:10448 [wandb_run.py:_on_init():2180] communicating current version
+2023-08-24 17:04:30,275 INFO    MainThread:10448 [wandb_run.py:_on_init():2189] got version response 
+2023-08-24 17:04:30,275 INFO    MainThread:10448 [wandb_init.py:init():781] starting run threads in backend
+2023-08-24 17:04:30,552 INFO    MainThread:10448 [wandb_run.py:_console_start():2159] atexit reg
+2023-08-24 17:04:30,552 INFO    MainThread:10448 [wandb_run.py:_redirect():2014] redirect: wrap_raw
+2023-08-24 17:04:30,552 INFO    MainThread:10448 [wandb_run.py:_redirect():2079] Wrapping output streams.
+2023-08-24 17:04:30,552 INFO    MainThread:10448 [wandb_run.py:_redirect():2104] Redirects installed.
+2023-08-24 17:04:30,553 INFO    MainThread:10448 [wandb_init.py:init():822] run started, returning control to user process
+2023-08-24 17:09:46,819 WARNING MsgRouterThr:10448 [router.py:message_loop():77] message_loop has been closed

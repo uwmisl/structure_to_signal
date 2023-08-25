@@ -1,1 +1,0 @@
-tensor(108.9014, dtype=torch.float64)

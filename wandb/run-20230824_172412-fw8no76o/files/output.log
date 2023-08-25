@@ -1,0 +1,39 @@
+num training examples:  3276
+num testing examples:  820
+GNN2(
+  (GCNconv1): GCNConv(8, 128)
+  (GCNconv2): GCNConv(128, 64)
+  (GCNconv3): GCNConv(64, 32)
+  (GCNconv4): GCNConv(32, 16)
+  (CNNconv1): Conv1d(16, 64, kernel_size=(10,), stride=(1,))
+  (CNNconv2): Conv1d(64, 32, kernel_size=(10,), stride=(1,))
+  (CNNconv3): Conv1d(32, 16, kernel_size=(10,), stride=(1,))
+  (avg_pool): AvgPool1d(kernel_size=(2,), stride=(2,), padding=(0,))
+  (fc1): Linear(in_features=384, out_features=8192, bias=True)
+  (fc2): Linear(in_features=8192, out_features=1, bias=True)
+  (dropout): Dropout(p=0.1, inplace=False)
+)
+Parameters:  3210081
+Epoch 1/100, Loss: 55.2084
+Epoch 2/100, Loss: 1.6194
+Epoch 3/100, Loss: 0.6316
+Epoch 4/100, Loss: 0.5683
+Epoch 5/100, Loss: 0.5661
+Epoch 6/100, Loss: 0.5652
+Epoch 7/100, Loss: 0.5711
+Epoch 8/100, Loss: 0.5658
+Epoch 9/100, Loss: 0.5651
+Epoch 10/100, Loss: 0.5648
+Epoch 11/100, Loss: 0.5622
+Epoch 12/100, Loss: 0.5624
+Epoch 13/100, Loss: 0.5689
+Epoch 14/100, Loss: 0.5689
+Epoch 15/100, Loss: 0.5672
+Traceback (most recent call last):
+  File "C:\Users\ediso\MISL\structure_to_signal\model.py", line 278, in <module>
+    train_losses = train(model, train_loader, optimizer, criterion, epochs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ediso\MISL\structure_to_signal\model.py", line 108, in train
+    epoch_loss += loss.item()
+                  ^^^^^^^^^^^
+KeyboardInterrupt

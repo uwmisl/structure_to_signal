@@ -1,0 +1,285 @@
+2023-08-25 10:13:18,081 INFO    StreamThr :43940 [internal.py:wandb_internal():86] W&B internal server running at pid: 43940, started at: 2023-08-25 10:13:18.081218
+2023-08-25 10:13:18,081 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status
+2023-08-25 10:13:18,090 INFO    WriterThread:43940 [datastore.py:open_for_write():85] open: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\run-dbi8y5sz.wandb
+2023-08-25 10:13:18,090 DEBUG   SenderThread:43940 [sender.py:send():379] send: header
+2023-08-25 10:13:18,223 DEBUG   SenderThread:43940 [sender.py:send():379] send: run
+2023-08-25 10:13:18,673 INFO    SenderThread:43940 [dir_watcher.py:__init__():211] watching files in: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files
+2023-08-25 10:13:18,673 INFO    SenderThread:43940 [sender.py:_start_run_threads():1121] run started: dbi8y5sz with start time 1692983598.081218
+2023-08-25 10:13:18,673 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:18,673 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:18,706 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: check_version
+2023-08-25 10:13:18,709 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: check_version
+2023-08-25 10:13:18,842 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: run_start
+2023-08-25 10:13:19,689 DEBUG   HandlerThread:43940 [system_info.py:__init__():31] System info init
+2023-08-25 10:13:19,689 DEBUG   HandlerThread:43940 [system_info.py:__init__():46] System info init done
+2023-08-25 10:13:19,689 INFO    HandlerThread:43940 [system_monitor.py:start():181] Starting system monitor
+2023-08-25 10:13:19,689 INFO    SystemMonitor:43940 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-08-25 10:13:19,689 INFO    HandlerThread:43940 [system_monitor.py:probe():201] Collecting system info
+2023-08-25 10:13:19,698 INFO    SystemMonitor:43940 [interfaces.py:start():190] Started cpu monitoring
+2023-08-25 10:13:19,705 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:19,707 INFO    SystemMonitor:43940 [interfaces.py:start():190] Started disk monitoring
+2023-08-25 10:13:19,709 INFO    SystemMonitor:43940 [interfaces.py:start():190] Started gpu monitoring
+2023-08-25 10:13:19,728 INFO    SystemMonitor:43940 [interfaces.py:start():190] Started memory monitoring
+2023-08-25 10:13:19,759 INFO    SystemMonitor:43940 [interfaces.py:start():190] Started network monitoring
+2023-08-25 10:13:19,770 DEBUG   HandlerThread:43940 [system_info.py:probe():195] Probing system
+2023-08-25 10:13:19,773 DEBUG   HandlerThread:43940 [system_info.py:_probe_git():180] Probing git
+2023-08-25 10:13:19,775 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:19,932 DEBUG   HandlerThread:43940 [system_info.py:_probe_git():188] Probing git done
+2023-08-25 10:13:19,932 DEBUG   HandlerThread:43940 [system_info.py:probe():240] Probing system done
+2023-08-25 10:13:19,932 DEBUG   HandlerThread:43940 [system_monitor.py:probe():210] {'os': 'Windows-10-10.0.22621-SP0', 'python': '3.11.0', 'heartbeatAt': '2023-08-25T17:13:19.770612', 'startedAt': '2023-08-25T17:13:18.040087', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'C:\\Users\\ediso\\MISL\\structure_to_signal\\model.py', 'codePath': 'model.py', 'git': {'remote': 'https://github.com/uwmisl/structure_to_signal.git', 'commit': 'ff013736f0672b044e3bd81a649a490ef11c122e'}, 'email': 'edleung@cs.washington.edu', 'root': 'C:/Users/ediso/MISL/structure_to_signal', 'host': 'DESKTOP-2SITI38', 'username': 'ediso', 'executable': 'C:\\Python311\\python.exe', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 2592.0, 'min': 0.0, 'max': 2592.0}, 'cpu_freq_per_core': [{'current': 2592.0, 'min': 0.0, 'max': 2592.0}], 'disk': {'total': 952.5976524353027, 'used': 421.64777755737305}, 'gpu': 'NVIDIA GeForce GTX 1650 Ti with Max-Q Design', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1650 Ti with Max-Q Design', 'memory_total': 4294967296}], 'memory': {'total': 15.709590911865234}}
+2023-08-25 10:13:19,932 INFO    HandlerThread:43940 [system_monitor.py:probe():211] Finished collecting system info
+2023-08-25 10:13:19,932 INFO    HandlerThread:43940 [system_monitor.py:probe():214] Publishing system info
+2023-08-25 10:13:19,932 DEBUG   HandlerThread:43940 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-08-25 10:13:19,935 DEBUG   HandlerThread:43940 [system_info.py:_save_pip():67] Saving pip packages done
+2023-08-25 10:13:19,935 INFO    HandlerThread:43940 [system_monitor.py:probe():216] Finished publishing system info
+2023-08-25 10:13:19,949 DEBUG   SenderThread:43940 [sender.py:send():379] send: files
+2023-08-25 10:13:19,949 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-metadata.json with policy now
+2023-08-25 10:13:19,964 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-25 10:13:19,964 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: stop_status
+2023-08-25 10:13:20,161 DEBUG   SenderThread:43940 [sender.py:send():379] send: telemetry
+2023-08-25 10:13:20,371 INFO    wandb-upload_0:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\AppData\Local\Temp\tmpc_jhhk8xwandb\4ubthw9b-wandb-metadata.json
+2023-08-25 10:13:20,698 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-metadata.json
+2023-08-25 10:13:20,698 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\requirements.txt
+2023-08-25 10:13:22,405 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:23,192 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status_report
+2023-08-25 10:13:23,739 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:24,429 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:25,760 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:26,451 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:27,777 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:28,480 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:29,063 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status_report
+2023-08-25 10:13:30,494 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:32,518 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:33,633 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:33,634 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:33,634 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:33,634 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:33,820 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:33,820 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:34,527 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:34,640 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status_report
+2023-08-25 10:13:34,972 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-25 10:13:34,972 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: stop_status
+2023-08-25 10:13:36,555 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:36,781 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:36,781 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:36,781 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:36,781 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:36,849 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:37,863 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:38,583 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:39,800 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status_report
+2023-08-25 10:13:39,836 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:39,836 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:39,836 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:39,836 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:39,872 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:40,620 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:41,878 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:42,643 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:42,952 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:42,953 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:42,953 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:42,961 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:43,912 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:43,912 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:44,676 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:44,988 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status_report
+2023-08-25 10:13:45,958 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:45,958 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:45,974 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:45,974 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:46,691 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:46,946 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:47,958 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:48,716 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:48,902 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:48,902 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:48,902 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:48,902 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:48,960 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:49,972 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:49,991 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-25 10:13:49,992 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: stop_status
+2023-08-25 10:13:50,183 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status_report
+2023-08-25 10:13:50,823 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:50,983 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\config.yaml
+2023-08-25 10:13:51,871 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:51,871 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:51,871 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:51,879 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:51,993 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:52,849 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:54,013 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:54,889 ERROR   gpu       :43940 [interfaces.py:monitor():144] Failed to sample metric: Not Supported
+2023-08-25 10:13:54,940 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:54,941 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:54,941 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:54,944 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:55,018 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:55,809 DEBUG   SenderThread:43940 [sender.py:send():379] send: files
+2023-08-25 10:13:55,809 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file media\images\Loss Over Epochs_8_3fbe883194e516820d21.png with policy now
+2023-08-25 10:13:55,809 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:55,812 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:55,812 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status_report
+2023-08-25 10:13:55,812 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:55,814 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:56,022 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:56,022 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:56,022 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\media\images\Loss Over Epochs_8_3fbe883194e516820d21.png
+2023-08-25 10:13:56,027 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\media
+2023-08-25 10:13:56,027 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\media\images
+2023-08-25 10:13:56,112 INFO    wandb-upload_0:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\AppData\Local\Temp\tmpc_jhhk8xwandb\gdm42nl7-media/images/Loss Over Epochs_8_3fbe883194e516820d21.png
+2023-08-25 10:13:56,568 INFO    wandb-upload_0:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\AppData\Local\Temp\tmpc_jhhk8xwandb\c83159ag-media/images/Loss Over Epochs_8_3fbe883194e516820d21.png
+2023-08-25 10:13:56,647 DEBUG   SenderThread:43940 [sender.py:send():379] send: files
+2023-08-25 10:13:56,647 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: partial_history
+2023-08-25 10:13:56,647 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file media\images\True vs. Predicted Values_9_d83b9123538d1e8e5e4a.png with policy now
+2023-08-25 10:13:56,651 DEBUG   SenderThread:43940 [sender.py:send():379] send: history
+2023-08-25 10:13:56,651 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: summary_record
+2023-08-25 10:13:56,651 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:56,651 DEBUG   SenderThread:43940 [sender.py:send():379] send: exit
+2023-08-25 10:13:56,651 INFO    SenderThread:43940 [sender.py:send_exit():584] handling exit code: 0
+2023-08-25 10:13:56,651 INFO    SenderThread:43940 [sender.py:send_exit():586] handling runtime: 37
+2023-08-25 10:13:56,651 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:56,654 INFO    SenderThread:43940 [sender.py:send_exit():592] send defer
+2023-08-25 10:13:56,654 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:56,654 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 0
+2023-08-25 10:13:56,654 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:56,654 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 0
+2023-08-25 10:13:56,654 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 1
+2023-08-25 10:13:56,656 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:56,656 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 1
+2023-08-25 10:13:56,656 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:56,656 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 1
+2023-08-25 10:13:56,656 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 2
+2023-08-25 10:13:56,656 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:56,656 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 2
+2023-08-25 10:13:56,656 INFO    HandlerThread:43940 [system_monitor.py:finish():190] Stopping system monitor
+2023-08-25 10:13:56,659 DEBUG   SystemMonitor:43940 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-08-25 10:13:56,659 DEBUG   SystemMonitor:43940 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-08-25 10:13:56,670 DEBUG   SystemMonitor:43940 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-08-25 10:13:56,670 INFO    HandlerThread:43940 [interfaces.py:finish():202] Joined cpu monitor
+2023-08-25 10:13:56,674 INFO    HandlerThread:43940 [interfaces.py:finish():202] Joined disk monitor
+2023-08-25 10:13:56,751 INFO    HandlerThread:43940 [interfaces.py:finish():202] Joined gpu monitor
+2023-08-25 10:13:56,758 INFO    HandlerThread:43940 [interfaces.py:finish():202] Joined memory monitor
+2023-08-25 10:13:56,758 INFO    HandlerThread:43940 [interfaces.py:finish():202] Joined network monitor
+2023-08-25 10:13:56,760 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:56,760 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 2
+2023-08-25 10:13:56,760 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 3
+2023-08-25 10:13:56,760 DEBUG   SenderThread:43940 [sender.py:send():379] send: stats
+2023-08-25 10:13:56,760 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:56,760 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 3
+2023-08-25 10:13:56,763 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:56,763 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 3
+2023-08-25 10:13:56,763 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 4
+2023-08-25 10:13:56,763 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:56,763 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 4
+2023-08-25 10:13:56,766 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:56,766 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 4
+2023-08-25 10:13:56,766 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 5
+2023-08-25 10:13:56,767 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:56,767 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 5
+2023-08-25 10:13:56,768 DEBUG   SenderThread:43940 [sender.py:send():379] send: summary
+2023-08-25 10:13:56,768 INFO    SenderThread:43940 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-25 10:13:56,768 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:56,768 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 5
+2023-08-25 10:13:56,768 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 6
+2023-08-25 10:13:56,768 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:56,768 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 6
+2023-08-25 10:13:56,768 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:56,768 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 6
+2023-08-25 10:13:56,768 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 7
+2023-08-25 10:13:56,768 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: status_report
+2023-08-25 10:13:56,768 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:56,768 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 7
+2023-08-25 10:13:56,768 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:56,768 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 7
+2023-08-25 10:13:56,963 INFO    wandb-upload_0:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\AppData\Local\Temp\tmpc_jhhk8xwandb\s5k9h01j-media/images/True vs. Predicted Values_9_d83b9123538d1e8e5e4a.png
+2023-08-25 10:13:57,029 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:13:57,029 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_created():271] file/dir created: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\media\images\True vs. Predicted Values_9_d83b9123538d1e8e5e4a.png
+2023-08-25 10:13:57,037 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\media\images
+2023-08-25 10:13:57,451 INFO    wandb-upload_0:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\AppData\Local\Temp\tmpc_jhhk8xwandb\7rwrsv91-media/images/True vs. Predicted Values_9_d83b9123538d1e8e5e4a.png
+2023-08-25 10:13:57,651 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-25 10:13:57,724 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 8
+2023-08-25 10:13:57,724 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: poll_exit
+2023-08-25 10:13:57,724 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:57,724 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 8
+2023-08-25 10:13:57,726 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:57,726 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 8
+2023-08-25 10:13:57,726 INFO    SenderThread:43940 [job_builder.py:build():281] Attempting to build job artifact
+2023-08-25 10:13:57,726 INFO    SenderThread:43940 [job_builder.py:_get_source_type():400] is repo sourced job
+2023-08-25 10:13:57,749 INFO    SenderThread:43940 [job_builder.py:build():374] adding wandb-job metadata file
+2023-08-25 10:13:57,772 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 9
+2023-08-25 10:13:57,772 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:13:57,780 DEBUG   SenderThread:43940 [sender.py:send():379] send: artifact
+2023-08-25 10:13:57,780 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 9
+2023-08-25 10:13:58,034 INFO    Thread-16 :43940 [dir_watcher.py:_on_file_modified():288] file/dir modified: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:13:58,611 INFO    wandb-upload_0:43940 [upload_job.py:push():86] Skipped uploading C:\Users\ediso\AppData\Local\wandb\wandb\artifacts\staging\tmpnww2_e4o
+2023-08-25 10:13:58,652 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-25 10:13:58,924 INFO    wandb-upload_1:43940 [upload_job.py:push():89] Uploaded file C:\Users\ediso\AppData\Local\wandb\wandb\artifacts\staging\tmpr23xskdb
+2023-08-25 10:13:59,861 INFO    SenderThread:43940 [sender.py:send_artifact():1475] sent artifact job-https___github.com_uwmisl_structure_to_signal.git_model.py - {'id': 'QXJ0aWZhY3Q6NTUxMzg0MjEx', 'digest': '9aab87901b790bfc790a883610866884', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjkyNjc5NDIx', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NTUxMzc3MTcy', 'versionIndex': 6}}, 'version': 'latest'}
+2023-08-25 10:13:59,864 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:13:59,864 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 9
+2023-08-25 10:13:59,864 INFO    SenderThread:43940 [dir_watcher.py:finish():358] shutting down directory watcher
+2023-08-25 10:14:00,051 INFO    SenderThread:43940 [dir_watcher.py:finish():388] scan: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files
+2023-08-25 10:14:00,051 INFO    SenderThread:43940 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\config.yaml config.yaml
+2023-08-25 10:14:00,051 INFO    SenderThread:43940 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log output.log
+2023-08-25 10:14:00,059 INFO    SenderThread:43940 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\requirements.txt requirements.txt
+2023-08-25 10:14:00,065 INFO    SenderThread:43940 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-metadata.json wandb-metadata.json
+2023-08-25 10:14:00,065 INFO    SenderThread:43940 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json wandb-summary.json
+2023-08-25 10:14:00,068 INFO    SenderThread:43940 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\media\images\Loss Over Epochs_8_3fbe883194e516820d21.png media/images/Loss Over Epochs_8_3fbe883194e516820d21.png
+2023-08-25 10:14:00,068 INFO    SenderThread:43940 [dir_watcher.py:finish():402] scan save: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\media\images\True vs. Predicted Values_9_d83b9123538d1e8e5e4a.png media/images/True vs. Predicted Values_9_d83b9123538d1e8e5e4a.png
+2023-08-25 10:14:00,068 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 10
+2023-08-25 10:14:00,068 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: poll_exit
+2023-08-25 10:14:00,071 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:14:00,076 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 10
+2023-08-25 10:14:00,077 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:14:00,077 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 10
+2023-08-25 10:14:00,077 INFO    SenderThread:43940 [file_pusher.py:finish():159] shutting down file pusher
+2023-08-25 10:14:00,317 INFO    wandb-upload_0:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\config.yaml
+2023-08-25 10:14:00,395 INFO    wandb-upload_1:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\output.log
+2023-08-25 10:14:00,502 INFO    wandb-upload_2:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\requirements.txt
+2023-08-25 10:14:00,525 INFO    wandb-upload_3:43940 [upload_job.py:push():131] Uploaded file C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\files\wandb-summary.json
+2023-08-25 10:14:00,729 INFO    Thread-15 (_thread_body):43940 [sender.py:transition_state():612] send defer: 11
+2023-08-25 10:14:00,729 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:14:00,729 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 11
+2023-08-25 10:14:00,730 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:14:00,730 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 11
+2023-08-25 10:14:00,730 INFO    SenderThread:43940 [file_pusher.py:join():164] waiting for file pusher
+2023-08-25 10:14:00,730 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 12
+2023-08-25 10:14:00,730 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:14:00,730 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 12
+2023-08-25 10:14:00,730 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:14:00,730 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 12
+2023-08-25 10:14:00,730 INFO    SenderThread:43940 [file_stream.py:finish():593] file stream finish called
+2023-08-25 10:14:00,850 INFO    SenderThread:43940 [file_stream.py:finish():597] file stream finish is done
+2023-08-25 10:14:00,850 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 13
+2023-08-25 10:14:00,850 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:14:00,850 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 13
+2023-08-25 10:14:00,850 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:14:00,850 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 13
+2023-08-25 10:14:00,850 INFO    SenderThread:43940 [sender.py:transition_state():612] send defer: 14
+2023-08-25 10:14:00,850 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: defer
+2023-08-25 10:14:00,850 DEBUG   SenderThread:43940 [sender.py:send():379] send: final
+2023-08-25 10:14:00,850 INFO    HandlerThread:43940 [handler.py:handle_request_defer():170] handle defer: 14
+2023-08-25 10:14:00,850 DEBUG   SenderThread:43940 [sender.py:send():379] send: footer
+2023-08-25 10:14:00,858 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: defer
+2023-08-25 10:14:00,858 INFO    SenderThread:43940 [sender.py:send_request_defer():608] handle sender defer: 14
+2023-08-25 10:14:00,858 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-25 10:14:00,859 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: server_info
+2023-08-25 10:14:00,859 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: get_summary
+2023-08-25 10:14:00,859 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: sampled_history
+2023-08-25 10:14:00,859 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: poll_exit
+2023-08-25 10:14:00,859 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: job_info
+2023-08-25 10:14:00,859 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: server_info
+2023-08-25 10:14:00,931 DEBUG   SenderThread:43940 [sender.py:send_request():406] send_request: job_info
+2023-08-25 10:14:00,931 INFO    MainThread:43940 [wandb_run.py:_footer_history_summary_info():3481] rendering history
+2023-08-25 10:14:00,933 INFO    MainThread:43940 [wandb_run.py:_footer_history_summary_info():3513] rendering summary
+2023-08-25 10:14:00,933 INFO    MainThread:43940 [wandb_run.py:_footer_sync_info():3440] logging synced files
+2023-08-25 10:14:00,937 DEBUG   HandlerThread:43940 [handler.py:handle_request():144] handle_request: shutdown
+2023-08-25 10:14:00,937 INFO    HandlerThread:43940 [handler.py:finish():857] shutting down handler
+2023-08-25 10:14:01,876 INFO    WriterThread:43940 [datastore.py:close():294] close: C:\Users\ediso\MISL\structure_to_signal\wandb\run-20230825_101318-dbi8y5sz\run-dbi8y5sz.wandb
+2023-08-25 10:14:01,940 INFO    SenderThread:43940 [sender.py:finish():1552] shutting down sender
+2023-08-25 10:14:01,940 INFO    SenderThread:43940 [file_pusher.py:finish():159] shutting down file pusher
+2023-08-25 10:14:01,940 INFO    SenderThread:43940 [file_pusher.py:join():164] waiting for file pusher

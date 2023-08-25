@@ -1,0 +1,50 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.11.0",
+    "heartbeatAt": "2023-08-25T17:48:30.612318",
+    "startedAt": "2023-08-25T17:48:29.951299",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\Users\\ediso\\MISL\\structure_to_signal\\model.py",
+    "codePath": "model.py",
+    "git": {
+        "remote": "https://github.com/uwmisl/structure_to_signal.git",
+        "commit": "ff013736f0672b044e3bd81a649a490ef11c122e"
+    },
+    "email": "edleung@cs.washington.edu",
+    "root": "C:/Users/ediso/MISL/structure_to_signal",
+    "host": "DESKTOP-2SITI38",
+    "username": "ediso",
+    "executable": "C:\\Python311\\python.exe",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2592.0,
+        "min": 0.0,
+        "max": 2592.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2592.0,
+            "min": 0.0,
+            "max": 2592.0
+        }
+    ],
+    "disk": {
+        "total": 952.5976524353027,
+        "used": 421.8364448547363
+    },
+    "gpu": "NVIDIA GeForce GTX 1650 Ti with Max-Q Design",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1650 Ti with Max-Q Design",
+            "memory_total": 4294967296
+        }
+    ],
+    "memory": {
+        "total": 15.709590911865234
+    }
+}

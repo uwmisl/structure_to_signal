@@ -1,0 +1,26 @@
+num training examples:  3276
+num testing examples:  820
+GNN2(
+  (GCNconv1): GCNConv(8, 128)
+  (GCNconv2): GCNConv(128, 64)
+  (GCNconv3): GCNConv(64, 32)
+  (GCNconv4): GCNConv(32, 16)
+  (CNNconv1): Conv1d(16, 64, kernel_size=(10,), stride=(1,))
+  (CNNconv2): Conv1d(64, 32, kernel_size=(10,), stride=(1,))
+  (CNNconv3): Conv1d(32, 16, kernel_size=(10,), stride=(1,))
+  (avg_pool): AvgPool1d(kernel_size=(2,), stride=(2,), padding=(0,))
+  (fc1): Linear(in_features=384, out_features=8192, bias=True)
+  (fc2): Linear(in_features=8192, out_features=1, bias=True)
+  (dropout): Dropout(p=0.1, inplace=False)
+)
+Parameters:  3210081
+Epoch 1/8, Loss: 67.6796
+Epoch 2/8, Loss: 1.2027
+Epoch 3/8, Loss: 0.6088
+Epoch 4/8, Loss: 0.5654
+Epoch 5/8, Loss: 0.5663
+Epoch 6/8, Loss: 0.5650
+Epoch 7/8, Loss: 0.5691
+Epoch 8/8, Loss: 0.5704
+Average Test Loss: 0.0220
+RMSE: 13.5759
