@@ -2,3 +2,4 @@
 /data/processed/
 /test_results
 *.pt
+/wandb

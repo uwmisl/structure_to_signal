@@ -1,5 +1,5 @@
 out_dir: results
-epochs: 8
+epochs: 5
 lr: 0.001
 data: "data/processed/"
 train_split_size: 0.8

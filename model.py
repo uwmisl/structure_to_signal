@@ -6,8 +6,6 @@ from torch_geometric.nn import global_mean_pool as gap, global_max_pool as gmp
 import torch.nn.functional as F
 # from dataset import DatasetLoader
 import os, glob
-from matplotlib import pyplot as plt
-import matplotlib
 import numpy as np
 from torch_geometric.nn import MessagePassing
 from torch_geometric.utils import degree
@@ -15,14 +13,8 @@ import random
 from sklearn.metrics import mean_squared_error
 import wandb
 
-
-from torch_geometric.graphgym.config import (
-    cfg,
-    dump_cfg,
-    load_cfg,
-    set_out_dir,
-    set_run_dir,
-)
+from torch_geometric.graphgym.cmd_args import parse_args
+import yaml
 
 class MeanSquaredLogError(nn.Module):
     def __init__(self):
@@ -34,24 +26,15 @@ class MeanSquaredLogError(nn.Module):
         return msle_loss
 
 def plot_true_vs_predicted(true_values, predicted_values):
-    plt.figure(figsize=(8, 8))
-    plt.scatter(true_values, predicted_values, color='blue', alpha=0.5)
-    plt.xlabel('True Values')
-    plt.ylabel('Predicted Values')
-    plt.title('True vs. Predicted Values')
-    plt.grid()
-    wandb.log({"True vs. Predicted Values": wandb.Image(plt)})
+    data = [[x,y] for (x,y) in zip(np.array(true_values).flatten(), np.array(predicted_values).flatten())]
+    table = wandb.Table(data=data, columns=["True", "Predicted"])
+    wandb.log({"true_predict_table" : wandb.plot.scatter(table, "True", "Predicted", title="True vs. Predicted Values")})
+
 
 def plot_loss_over_epochs(losses, epochs):
-    plt.figure(figsize=(10, 6))
-    plt.plot(range(1, epochs+1), losses, color='blue')
-    plt.xlabel('Epoch')
-    plt.ylabel('Loss')
-    # plt.yscale('log')  # Use a logarithmic scale for the y-axis
-    # plt.title('Loss Over Epochs (Log Scale)')
-    plt.title('Loss Over Epochs')
-    plt.grid()
-    wandb.log({"Loss Over Epochs": wandb.Image(plt)})
+    data = [[x,y] for (x, y) in zip(range(1, epochs + 1), losses)]
+    table = wandb.Table(data=data, columns=["Epoch", "Loss"])
+    wandb.log({"loss_epoch_table" : wandb.plot.line(table, "Epoch", "Loss", title="Loss Over Epochs")})
 
 def load_data(file_path):
     file_list = glob.glob('data/processed/data_*')
@@ -116,8 +99,7 @@ def train(model, train_loader, optimizer, criterion, epochs):
             epoch_loss += loss.item()
         losses.append(epoch_loss)
         print(f'Epoch {epoch+1}/{epochs}, Loss: {epoch_loss:.4f}')
-        wandb.log({"epoch" : epoch,
-                   "train/loss": loss})
+        wandb.log({"train/loss": loss})
     return losses
 
 def test(model, test_loader, criterion):
@@ -193,7 +175,7 @@ class CustomGCNConv(MessagePassing):
 class GNN2(nn.Module):
     def __init__(self, in_features):
         super(GNN2, self).__init__()
-        self.GCNconv1 = GCNConv(in_features, 128) 
+        self.GCNconv1 = GCNConv(in_features, 128) # TODO: Do we want configs for num layers and the properties of the layers
         self.GCNconv2 = GCNConv(128, 64)
         self.GCNconv3 = GCNConv(64, 32)
         self.GCNconv4 = GCNConv(32, 16)
@@ -246,50 +228,49 @@ class GNN2(nn.Module):
 
 # Main
 # ___________________________________________________________________________________
-wandb.init(
-    project="MISL Structure to Signal",
-    config={
-        "epochs": 8,
-        "lr": 0.001,
-        "data": "data/processed/",
-        "train_split_size": 0.8,
-        "batch_size": 128
-    }
-)
+if __name__ == '__main__':
+    # Load config file
+    args = parse_args()
+    cfg = yaml.load(open(args.cfg_file), Loader=yaml.FullLoader)
+    wandb.init(
+        project="MISL Structure to Signal",
+        config={
+            "epochs": cfg['epochs'],
+            "lr": cfg['lr'],
+            "data": "data/processed/",
+            "train_split_size": cfg['train_split_size'],
+            "batch_size": cfg['batch_size']
+        }
+    )
 
-num_epochs = wandb.config['epochs']
-file_path = wandb.config['data']
-train_split_size = wandb.config['train_split_size']
-batch_size = wandb.config['batch_size']
-lr = wandb.config['lr']
-# load and process data
-data_list = load_data(file_path)
-random.shuffle(data_list)
+    # load and process data
+    data_list = load_data(wandb.config['data'])
+    random.shuffle(data_list)
 
-train_examples, test_examples = train_test_split(data_list, train_split_size)
-# scaled_train, scaled_test = min_max_scale(train_examples, test_examples)
-# normalized_train, noramlized_test, target_mean, target_std = noramlize(train_examples, test_examples)
-# train_loader, test_loader = create_data_loaders(normalized_train, noramlized_test, batch=128)
-train_loader, test_loader = create_data_loaders(train_examples, test_examples, batch=batch_size)
+    train_examples, test_examples = train_test_split(data_list, wandb.config['train_split_size'])
+    # scaled_train, scaled_test = min_max_scale(train_examples, test_examples)
+    # normalized_train, noramlized_test, target_mean, target_std = noramlize(train_examples, test_examples)
+    # train_loader, test_loader = create_data_loaders(normalized_train, noramlized_test, batch=128)
+    train_loader, test_loader = create_data_loaders(train_examples, test_examples, batch=wandb.config['batch_size'])
 
-# load model
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = GNN2(in_features=8).to(device) 
-model = model.double()
-print(model)
-print("Parameters: ", sum(p.numel() for p in model.parameters()))
+    # load model
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    model = GNN2(in_features=8).to(device) 
+    model = model.double()
+    print(model)
+    print("Parameters: ", sum(p.numel() for p in model.parameters()))
 
-# define optimizer and loss function
-optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-# criterion = nn.MSELoss()
-criterion = MeanSquaredLogError()
+    # define optimizer and loss function
+    optimizer = torch.optim.Adam(model.parameters(), lr=wandb.config['lr'])
+    # criterion = nn.MSELoss()
+    criterion = MeanSquaredLogError()
 
-# train model
-train_losses = train(model, train_loader, optimizer, criterion, num_epochs)
-plot_loss_over_epochs(train_losses, num_epochs)
-# plot_logloss_over_epochs(train_losses, epochs)
+    # train model
+    train_losses = train(model, train_loader, optimizer, criterion, wandb.config['epochs'])
+    plot_loss_over_epochs(train_losses, wandb.config['epochs'])
+    # plot_logloss_over_epochs(train_losses, epochs)
 
-# test model
-tst_losses, true_values, predicted_values = test(model, test_loader, criterion)
+    # test model
+    tst_losses, true_values, predicted_values = test(model, test_loader, criterion)
 
-plot_true_vs_predicted(true_values, predicted_values)
+    plot_true_vs_predicted(true_values, predicted_values)
