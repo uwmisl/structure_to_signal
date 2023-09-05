@@ -1,7 +1,5 @@
 import numpy as np
-import itertools
 from os import sys
-import torch
 from rdkit import Chem
 from rdkit.Chem import rdDepictor
 from rdkit.Chem.Draw import rdMolDraw2D
@@ -140,26 +138,29 @@ def add_AX_columns_to_dataframe(df, Atms, nAtms):
 
     return padded_A_mat, padded_X_mat 
 
+def prep_data(base_to_smiles_dict: dict, file_path: str, out_dir: str):
+    df = pd.read_csv(file_path, delimiter='\t')
+    df['smiles'] = df['kmer'].apply(lambda x: get_smiles_string(x, base_to_smiles_dict))
+    A,X = add_AX_columns_to_dataframe(df, ['C', 'N', 'O', 'P'], 133)
+    level_means = col_list = df['level_mean'].values.tolist()
+    data = DatasetLoader(out_dir, A, X, level_means)
+    data.process()
+
+        
 ### MAIN ###
 # load data
-file_path = 'data/template_median68pA.model'
-df = pd.read_csv(file_path, delimiter='\t')
-# print(df)
+dna_file_path = 'data/template_median68pA.model'
+rna_file_path = 'data/template_median69pA.model'
 
 dna_base_smiles = {'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
             'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
             'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)CC1',
             'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1'}
 
-df['smiles'] = df['kmer'].apply(lambda x: get_smiles_string(x, dna_base_smiles))
-# print(df)
-
-A,X = add_AX_columns_to_dataframe(df, ['C', 'N', 'O', 'P'], 133)
-print(A.shape)
-print(X.shape)
-
-level_means = col_list = df['level_mean'].values.tolist()
-# print(level_means)
-
-data = DatasetLoader("data/", A, X, level_means)
-data.process()
+rna_base_smiles = {
+     'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)C(O)C1',
+     'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C=C2)C(O)C1',
+     'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)C(O)C1',
+     'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)C(O)C1'
+}
+prep_data(base_to_smiles_dict=rna_base_smiles, file_path=rna_file_path, out_dir="rna_data/")

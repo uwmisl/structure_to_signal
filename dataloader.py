@@ -1,6 +1,5 @@
 import numpy as np
 from os import sys
-from torch_geometric.utils.convert import to_scipy_sparse_matrix
 import torch
 import torch_geometric
 from torch_geometric.data import Data, InMemoryDataset

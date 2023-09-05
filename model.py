@@ -274,3 +274,5 @@ if __name__ == '__main__':
     tst_losses, true_values, predicted_values = test(model, test_loader, criterion)
 
     plot_true_vs_predicted(true_values, predicted_values)
+
+#  new dictionary for RNA encoding for smiles string, if working, throw in DNA
