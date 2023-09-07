@@ -10,10 +10,11 @@ def write_list_to_file(filename: str, list):
         for line in list:
             f.write("%s\n" % line)
 class DatasetLoader(InMemoryDataset):
-    def __init__(self, root, A, X, edge_labels, transform=None, pre_transform=None):
+    def __init__(self, root, A, X, edge_labels, kmer_labels, transform=None, pre_transform=None):
         self.A = A
         self.X = X
         self.edge_labels = edge_labels
+        self.kmer_labels = kmer_labels
         super(DatasetLoader, self).__init__(root, transform, pre_transform)
 
     @property
@@ -74,9 +75,10 @@ class DatasetLoader(InMemoryDataset):
                 x=node_feats,
                 edge_index=adjacency_info, 
                 edge_attr=edge_feats,
-                y=label)
+                y=label,
+                kmer_label=f'{self.kmer_labels[i]}')
             data.validate(raise_on_error=True)
-            torch.save(data, os.path.join(self.processed_dir, f'data_{i}.pt'))
+            torch.save(data, os.path.join(self.processed_dir, f'data_{i+4096}.pt'))
 
         # data, slices = self.collate(data_list)
         data.validate(raise_on_error=True)

@@ -25,9 +25,9 @@ class MeanSquaredLogError(nn.Module):
         msle_loss = torch.mean(log_diff ** 2)
         return msle_loss
 
-def plot_true_vs_predicted(true_values, predicted_values):
-    data = [[x,y] for (x,y) in zip(np.array(true_values).flatten(), np.array(predicted_values).flatten())]
-    table = wandb.Table(data=data, columns=["True", "Predicted"])
+def plot_true_vs_predicted(true_values, predicted_values, kmer_values):
+    data = [[x,y, kmer] for (x,y, kmer) in zip(np.array(true_values).flatten(), np.array(predicted_values).flatten(), np.array(kmer_values).flatten())]
+    table = wandb.Table(data=data, columns=["True", "Predicted", "Kmer"])
     wandb.log({"true_predict_table" : wandb.plot.scatter(table, "True", "Predicted", title="True vs. Predicted Values")})
 
 
@@ -37,7 +37,7 @@ def plot_loss_over_epochs(losses, epochs):
     wandb.log({"loss_epoch_table" : wandb.plot.line(table, "Epoch", "Loss", title="Loss Over Epochs")})
 
 def load_data(file_path):
-    file_list = glob.glob('data/processed/data_*')
+    file_list = glob.glob(f'{file_path}/processed/data_*')
     data_list = [torch.load(f) for f in file_list]
     return data_list
 
@@ -107,7 +107,7 @@ def test(model, test_loader, criterion):
     losses = []
     true_values = []
     predicted_values = []
-    
+    label_values = []
     with torch.no_grad():  # Disable gradient computation during testing
         for batch in test_loader:
             batch = batch.to(device)
@@ -117,14 +117,14 @@ def test(model, test_loader, criterion):
             
             true_values.extend(batch.y.view(-1, 1).cpu().numpy())
             predicted_values.extend(out.cpu().numpy())
-
+            label_values.extend(batch.kmer_label)
     average_loss = sum(losses) / len(losses)
     print(f'Average Test Loss: {average_loss:.4f}')
     
     rmse = np.sqrt(mean_squared_error(np.array(true_values), np.array(predicted_values)))
     print(f'RMSE: {rmse:.4f}')
 
-    return losses, true_values, predicted_values
+    return losses, true_values, predicted_values, label_values
 
 class GNN(nn.Module):
     def __init__(self, in_features, hidden_features):
@@ -237,7 +237,7 @@ if __name__ == '__main__':
         config={
             "epochs": cfg['epochs'],
             "lr": cfg['lr'],
-            "data": "data/processed/",
+            "data": cfg['data'],
             "train_split_size": cfg['train_split_size'],
             "batch_size": cfg['batch_size']
         }
@@ -271,8 +271,8 @@ if __name__ == '__main__':
     # plot_logloss_over_epochs(train_losses, epochs)
 
     # test model
-    tst_losses, true_values, predicted_values = test(model, test_loader, criterion)
+    tst_losses, true_values, predicted_values, kmer_values = test(model, test_loader, criterion)
 
-    plot_true_vs_predicted(true_values, predicted_values)
+    plot_true_vs_predicted(true_values, predicted_values, kmer_values)
 
 #  new dictionary for RNA encoding for smiles string, if working, throw in DNA

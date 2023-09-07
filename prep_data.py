@@ -143,7 +143,8 @@ def prep_data(base_to_smiles_dict: dict, file_path: str, out_dir: str):
     df['smiles'] = df['kmer'].apply(lambda x: get_smiles_string(x, base_to_smiles_dict))
     A,X = add_AX_columns_to_dataframe(df, ['C', 'N', 'O', 'P'], 133)
     level_means = col_list = df['level_mean'].values.tolist()
-    data = DatasetLoader(out_dir, A, X, level_means)
+    kmer_label = df['kmer'].values.tolist()
+    data = DatasetLoader(out_dir, A, X, level_means, kmer_labels=kmer_label)
     data.process()
 
         
@@ -163,4 +164,4 @@ rna_base_smiles = {
      'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)C(O)C1',
      'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)C(O)C1'
 }
-prep_data(base_to_smiles_dict=rna_base_smiles, file_path=rna_file_path, out_dir="rna_data/")
+prep_data(base_to_smiles_dict=rna_base_smiles, file_path=rna_file_path, out_dir="data/dna_rna_data/")
