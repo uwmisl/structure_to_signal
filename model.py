@@ -226,6 +226,50 @@ class GNN2(nn.Module):
 
         return x
 
+class GATsimple(nn.Module):
+    def __init__(self, in_features, heads):
+        super(GATsimple, self).__init__()
+        self.GATconv1 = GATConv(in_features, 128, heads) 
+        self.GATconv2 = GATConv(128*heads, 64, heads)
+        self.GATconv3 = GATConv(64*heads, 32, heads)
+        self.GATconv4 = GATConv(32*heads, 16, heads)
+
+        self.fc1 = nn.Linear(8512, 1)
+
+    def forward(self, x, edge_index, batch):
+        x = F.elu(self.GATconv1(x, edge_index))
+        x = F.elu(self.GATconv2(x, edge_index))
+        x = F.elu(self.GATconv3(x, edge_index))
+        x = F.elu(self.GATconv4(x, edge_index))
+        
+        batch_size = batch.max().item() + 1  # Assuming batch is a tensor with batch assignments for each node
+        x = x.view(batch_size, -1)  # Shape: [batch_size, flattened_features]
+        x = self.fc1(x)
+
+        return x
+
+class GCNsimple(nn.Module):
+    def __init__(self, in_features):
+        super(GCNsimple, self).__init__()
+        self.GATconv1 = GCNConv(in_features, 128) 
+        self.GATconv2 = GCNConv(128, 64)
+        self.GATconv3 = GCNConv(64, 32)
+        self.GATconv4 = GCNConv(32, 16)
+
+        self.fc1 = nn.Linear(2128, 1)
+
+    def forward(self, x, edge_index, batch):
+        x = F.elu(self.GATconv1(x, edge_index))
+        x = F.elu(self.GATconv2(x, edge_index))
+        x = F.elu(self.GATconv3(x, edge_index))
+        x = F.elu(self.GATconv4(x, edge_index))
+        
+        batch_size = batch.max().item() + 1  # Assuming batch is a tensor with batch assignments for each node
+        x = x.view(batch_size, -1)  # Shape: [batch_size, flattened_features]
+        x = self.fc1(x)
+
+        return x
+
 # Main
 # ___________________________________________________________________________________
 if __name__ == '__main__':
