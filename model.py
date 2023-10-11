@@ -267,6 +267,50 @@ class GNN2(nn.Module):
 
         return x
 
+class GATsimple(nn.Module):
+    def __init__(self, in_features, heads):
+        super(GATsimple, self).__init__()
+        self.GATconv1 = GATConv(in_features, 128, heads) 
+        self.GATconv2 = GATConv(128*heads, 64, heads)
+        self.GATconv3 = GATConv(64*heads, 32, heads)
+        self.GATconv4 = GATConv(32*heads, 16, heads)
+
+        self.fc1 = nn.Linear(8512, 1)
+
+    def forward(self, x, edge_index, batch):
+        x = F.elu(self.GATconv1(x, edge_index))
+        x = F.elu(self.GATconv2(x, edge_index))
+        x = F.elu(self.GATconv3(x, edge_index))
+        x = F.elu(self.GATconv4(x, edge_index))
+        
+        batch_size = batch.max().item() + 1  # Assuming batch is a tensor with batch assignments for each node
+        x = x.view(batch_size, -1)  # Shape: [batch_size, flattened_features]
+        x = self.fc1(x)
+
+        return x
+
+class GCNsimple(nn.Module):
+    def __init__(self, in_features):
+        super(GCNsimple, self).__init__()
+        self.GATconv1 = GCNConv(in_features, 128) 
+        self.GATconv2 = GCNConv(128, 64)
+        self.GATconv3 = GCNConv(64, 32)
+        self.GATconv4 = GCNConv(32, 16)
+
+        self.fc1 = nn.Linear(2128, 1)
+
+    def forward(self, x, edge_index, batch):
+        x = F.elu(self.GATconv1(x, edge_index))
+        x = F.elu(self.GATconv2(x, edge_index))
+        x = F.elu(self.GATconv3(x, edge_index))
+        x = F.elu(self.GATconv4(x, edge_index))
+        
+        batch_size = batch.max().item() + 1  # Assuming batch is a tensor with batch assignments for each node
+        x = x.view(batch_size, -1)  # Shape: [batch_size, flattened_features]
+        x = self.fc1(x)
+
+        return x
+
 # Main
 # ___________________________________________________________________________________
 if __name__ == '__main__':
@@ -289,8 +333,8 @@ if __name__ == '__main__':
     data_list = load_data(wandb.config['data'])
     random.shuffle(data_list)
 
-    # train_examples, test_examples = train_test_split(data_list, wandb.config['train_split_size'])
-    train_examples, test_examples = train_test_split_base_drop(data_list, ['C', 'G'])
+    train_examples, test_examples = train_test_split(data_list, wandb.config['train_split_size'])
+    # train_examples, test_examples = train_test_split_base_drop(data_list, ['C', 'G'])
     # scaled_train, scaled_test = min_max_scale(train_examples, test_examples)
     # normalized_train, noramlized_test, target_mean, target_std = noramlize(train_examples, test_examples)
     # train_loader, test_loader = create_data_loaders(normalized_train, noramlized_test, batch=128)
@@ -318,3 +362,4 @@ if __name__ == '__main__':
 
     plot_true_vs_predicted(true_values, predicted_values, kmer_values)
 
+#  new dictionary for RNA encoding for smiles string, if working, throw in DNA
