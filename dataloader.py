@@ -66,10 +66,6 @@ class DatasetLoader(InMemoryDataset):
             adjacency_info = self._get_adjacency_info(edge_indices[i])
             edge_feats = self._get_edge_features()  # currently None
             label = self._get_label(self.edge_labels[i])
-            # write_list_to_file(f'data_{i}_node_feats.pt', node_feats)
-            # write_list_to_file(f'data_{i}_adj_info.pt', adjacency_info)
-            # write_list_to_file(f'data_{i}_label.pt', label)
-            # write_list_to_file(f'data_{i}_edge_feats.pt', edge_feats)
 
             data = Data(
                 x=node_feats,

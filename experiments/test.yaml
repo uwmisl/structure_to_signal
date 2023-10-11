@@ -1,6 +1,11 @@
 out_dir: results
-epochs: 200
+epochs: 100
 lr: 0.001
-data: "data/rna_data"
-train_split_size: 0.9
+data: "data/dna_rna_data"
+train_split_size: 0.80
 batch_size: 128
+tags:
+  # - "rna"
+  - "rna/dna"
+  # - "base_drop"
+  - "combined_base_drop"

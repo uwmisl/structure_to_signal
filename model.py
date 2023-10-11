@@ -4,7 +4,6 @@ from torch_geometric.nn import GCNConv, GraphConv, GATConv
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import global_mean_pool as gap, global_max_pool as gmp
 import torch.nn.functional as F
-# from dataset import DatasetLoader
 import os, glob
 import numpy as np
 from torch_geometric.nn import MessagePassing
@@ -16,6 +15,11 @@ import wandb
 from torch_geometric.graphgym.cmd_args import parse_args
 import yaml
 
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.metrics import r2_score
+import plotly.graph_objects as go
 class MeanSquaredLogError(nn.Module):
     def __init__(self):
         super(MeanSquaredLogError, self).__init__()
@@ -26,9 +30,30 @@ class MeanSquaredLogError(nn.Module):
         return msle_loss
 
 def plot_true_vs_predicted(true_values, predicted_values, kmer_values):
-    data = [[x,y, kmer] for (x,y, kmer) in zip(np.array(true_values).flatten(), np.array(predicted_values).flatten(), np.array(kmer_values).flatten())]
-    table = wandb.Table(data=data, columns=["True", "Predicted", "Kmer"])
+    data = [[x,y, str(kmer), "rna" if "(rna)" in kmer else "dna"] for (x,y, kmer) in zip(np.array(true_values).flatten(), np.array(predicted_values).flatten(), np.array(kmer_values).flatten())]
+
+
+    x = [x for x in np.array(true_values).flatten()]
+    y = [y for y in np.array(predicted_values).flatten()]
+
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x=x, y=y, mode='markers', name='Data Points'))
+    z = np.polyfit(x, y, 1)
+    p = np.poly1d(z)
+    fig.add_trace(go.Scatter(x=x, y=p(x), mode='lines', name="trendline"))
+    fig.add_annotation(
+        text=f'r-squared = {r2_score(x, y)}',
+        xref='paper', yref='paper',
+        x=0.95, y=0.05,  # Adjust the x and y values to position the annotation
+        showarrow=False,
+        font=dict(size=12, color='red')
+    )
+    for i in range(len(x)):
+        data.append([x[i], p(x)[i], "----", "trend_line"])
+    table = wandb.Table(data=data, columns=["True", "Predicted", "Kmer", "dataset"])
     wandb.log({"true_predict_table" : wandb.plot.scatter(table, "True", "Predicted", title="True vs. Predicted Values")})
+    wandb.log({"true_predict_trend" : fig})
+    print("r-squared = {:.3f}".format(r2_score(x, y)), (0, 1))
 
 
 def plot_loss_over_epochs(losses, epochs):
@@ -49,6 +74,22 @@ def train_test_split(data_list, split_size=0.8):
     print('num testing examples: ', len(test_dataset))
     return train_dataset, test_dataset
 
+def train_test_split_base_drop(data_list, bases: list):
+    train = []
+    test = []
+    for data in data_list:
+        # drop base from rna only
+        if (bases[0] not in data.kmer_label and bases[1] not in data.kmer_label) or '(rna)' not in data.kmer_label: 
+        # drop base from both
+        # if base not in data.kmer_label:
+        # drop base from dna
+        # if base not in data.kmer_label and '(rna)' not in data.kmer_label:
+            train.append(data)
+        else:
+            test.append(data)
+    print('num training examples: ', len(train))
+    print('num testing examples: ', len(test))
+    return train, test
 def min_max_scale(train_dataset, test_dataset):
     # grab y values for training set
     y_values = [data.y for data in train_dataset]
@@ -175,7 +216,7 @@ class CustomGCNConv(MessagePassing):
 class GNN2(nn.Module):
     def __init__(self, in_features):
         super(GNN2, self).__init__()
-        self.GCNconv1 = GCNConv(in_features, 128) # TODO: Do we want configs for num layers and the properties of the layers
+        self.GCNconv1 = GCNConv(in_features, 128)
         self.GCNconv2 = GCNConv(128, 64)
         self.GCNconv3 = GCNConv(64, 32)
         self.GCNconv4 = GCNConv(32, 16)
@@ -239,15 +280,17 @@ if __name__ == '__main__':
             "lr": cfg['lr'],
             "data": cfg['data'],
             "train_split_size": cfg['train_split_size'],
-            "batch_size": cfg['batch_size']
-        }
+            "batch_size": cfg['batch_size'],
+        },
+        tags=cfg['tags']
     )
 
     # load and process data
     data_list = load_data(wandb.config['data'])
     random.shuffle(data_list)
 
-    train_examples, test_examples = train_test_split(data_list, wandb.config['train_split_size'])
+    # train_examples, test_examples = train_test_split(data_list, wandb.config['train_split_size'])
+    train_examples, test_examples = train_test_split_base_drop(data_list, ['C', 'G'])
     # scaled_train, scaled_test = min_max_scale(train_examples, test_examples)
     # normalized_train, noramlized_test, target_mean, target_std = noramlize(train_examples, test_examples)
     # train_loader, test_loader = create_data_loaders(normalized_train, noramlized_test, batch=128)
@@ -275,4 +318,3 @@ if __name__ == '__main__':
 
     plot_true_vs_predicted(true_values, predicted_values, kmer_values)
 
-#  new dictionary for RNA encoding for smiles string, if working, throw in DNA
