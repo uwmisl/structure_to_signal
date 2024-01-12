@@ -79,9 +79,9 @@ def train_test_split_base_drop(data_list, bases: list):
     test = []
     for data in data_list:
         # drop base from rna only
-        if (bases[0] not in data.kmer_label and bases[1] not in data.kmer_label) or '(rna)' not in data.kmer_label: 
+        # if (bases[0] not in data.kmer_label and bases[1] not in data.kmer_label) or '(rna)' not in data.kmer_label: 
         # drop base from both
-        # if base not in data.kmer_label:
+        if bases[0] not in data.kmer_label:
         # drop base from dna
         # if base not in data.kmer_label and '(rna)' not in data.kmer_label:
             train.append(data)
@@ -311,6 +311,72 @@ class GCNsimple(nn.Module):
 
         return x
 
+class GATLSTMModel(nn.Module):
+    def __init__(self, in_features, heads, lstm_hidden_size):
+        super(GATLSTMModel, self).__init__()
+        self.heads = heads
+
+        self.GATconv1 = GATConv(in_features, 128, heads) 
+        self.GATconv2 = GATConv(128*heads, 64, heads)
+        self.GATconv3 = GATConv(64*heads, 32, heads)
+        self.GATconv4 = GATConv(32*heads, 16, heads)
+
+        self.lstm = nn.LSTM(input_size=16*heads, hidden_size=lstm_hidden_size, batch_first=True)
+        self.fc1 = nn.Linear(16*heads + lstm_hidden_size, 1)
+
+    def forward(self, x, edge_index, batch):
+        x = F.elu(self.GATconv1(x, edge_index))
+        x = F.elu(self.GATconv2(x, edge_index))
+        x = F.elu(self.GATconv3(x, edge_index))
+        gat_output = F.elu(self.GATconv4(x, edge_index))
+        
+        batch_size = batch.max().item() + 1  # Assuming batch is a tensor with batch assignments for each node
+        x = gat_output.view(batch_size, -1, 16 * self.heads)
+        lstm_out, _ = self.lstm(x)
+        lstm_out = lstm_out[:, -1, :]  # Taking the last output
+
+        # Reshape or aggregate gat_output
+        gat_output = torch.mean(gat_output.view(batch_size, -1, 16 * self.heads), dim=1)
+
+        # Combine features
+        combined_features = torch.cat([gat_output, lstm_out], dim=1)
+        x = self.fc1(combined_features)
+        return x
+
+class GCN_LSTM_Model(nn.Module):
+    def __init__(self, in_features, hidden_dim=64, lstm_layers=1):
+        super(GCN_LSTM_Model, self).__init__()
+        self.GCNconv1 = GCNConv(in_features, 128)
+        self.GCNconv2 = GCNConv(128, 64)
+        self.GCNconv3 = GCNConv(64, 32)
+        self.GCNconv4 = GCNConv(32, 16)
+
+        self.lstm = nn.LSTM(input_size=16, hidden_size=hidden_dim, num_layers=lstm_layers, batch_first=True)
+        # Fully connected layer for output
+        self.fc1 = nn.Linear(hidden_dim + 16, 1)
+
+    def forward(self, x, edge_index, batch):
+        x = F.elu(self.GCNconv1(x, edge_index))
+        x = F.elu(self.GCNconv2(x, edge_index))
+        x = F.elu(self.GCNconv3(x, edge_index))
+        gcn_output = F.elu(self.GCNconv4(x, edge_index))
+
+        
+        # Reshape for LSTM: Assume x is now of shape [num_nodes, 16]
+        # You need to reshape x to be [batch_size, sequence_length, 16]
+        # This might involve some custom logic depending on how your data is structured
+        batch_size = batch.max().item() + 1
+        x = x.view(batch_size, -1, 16)  # Example reshaping, adjust as needed
+
+        # LSTM forward pass
+        lstm_out, _ = self.lstm(x)
+        # Take the last output for classification
+        lstm_out = lstm_out[:, -1, :]
+
+        gcn_output = torch.mean(gcn_output.view(batch_size, -1, 16), dim=1)
+        combined_features = torch.cat([gcn_output, lstm_out], dim=1)
+        x = self.fc1(combined_features)
+        return x
 # Main
 # ___________________________________________________________________________________
 if __name__ == '__main__':
@@ -333,8 +399,8 @@ if __name__ == '__main__':
     data_list = load_data(wandb.config['data'])
     random.shuffle(data_list)
 
-    train_examples, test_examples = train_test_split(data_list, wandb.config['train_split_size'])
-    # train_examples, test_examples = train_test_split_base_drop(data_list, ['C', 'G'])
+    # train_examples, test_examples = train_test_split(data_list, wandb.config['train_split_size'])
+    train_examples, test_examples = train_test_split_base_drop(data_list, ['A'])
     # scaled_train, scaled_test = min_max_scale(train_examples, test_examples)
     # normalized_train, noramlized_test, target_mean, target_std = noramlize(train_examples, test_examples)
     # train_loader, test_loader = create_data_loaders(normalized_train, noramlized_test, batch=128)
@@ -342,15 +408,20 @@ if __name__ == '__main__':
 
     # load model
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model = GNN2(in_features=8).to(device) 
+    model = GCN_LSTM_Model(8).to(device)
+    # model = GATLSTMModel(in_features=8, heads=4, lstm_hidden_size=64).to(device) 
+
+    # Base Models
+    # model = GATsimple(in_features=8, heads=4).to(device)
+    # model = GNN2(in_features=8).to(device)
     model = model.double()
     print(model)
     print("Parameters: ", sum(p.numel() for p in model.parameters()))
 
     # define optimizer and loss function
     optimizer = torch.optim.Adam(model.parameters(), lr=wandb.config['lr'])
-    # criterion = nn.MSELoss()
-    criterion = MeanSquaredLogError()
+    criterion = nn.MSELoss()
+    # criterion = MeanSquaredLogError()
 
     # train model
     train_losses = train(model, train_loader, optimizer, criterion, wandb.config['epochs'])

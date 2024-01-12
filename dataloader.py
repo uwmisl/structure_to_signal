@@ -74,7 +74,7 @@ class DatasetLoader(InMemoryDataset):
                 y=label,
                 kmer_label=f'{self.kmer_labels[i]}')
             data.validate(raise_on_error=True)
-            torch.save(data, os.path.join(self.processed_dir, f'data_{i+4096}.pt'))
+            torch.save(data, os.path.join(self.processed_dir, f'data_{i}.pt'))
 
         # data, slices = self.collate(data_list)
         data.validate(raise_on_error=True)

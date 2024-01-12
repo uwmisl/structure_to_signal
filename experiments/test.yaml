@@ -1,11 +1,24 @@
 out_dir: results
 epochs: 100
 lr: 0.001
-data: "data/dna_rna_data"
+# data: "data/dna_rna_data"
+# data: "data/xna_data/ATGC_r9.4.1"
+data: "data/xna_data/B_r9.4.1"
+# data: "data/xna_data/J_r9.4.1"
+# data: "data/xna_data/Kn_r9.4.1"
+# data: "data/xna_data/P_r9.4.1"
+# data: "data/xna_data/Sc_r9.4.1"
+# data: "data/xna_data/Sn_r9.4.1"
+# data: "data/xna_data/V_r9.4.1"
+# data: "data/xna_data/Xt_r9.4.1"
+# data: "data/xna_data/Zn_r9.4.1"
+# data: "data/xna_data/Za_r9.4.1"
 train_split_size: 0.80
 batch_size: 128
 tags:
-  # - "rna"
-  - "rna/dna"
+  # - "dna"
+  # - "rna/dna"
+  - 'xna'
   # - "base_drop"
-  - "combined_base_drop"
+  # - "combined_base_drop"
+  - "LSTM"

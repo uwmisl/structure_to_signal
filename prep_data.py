@@ -139,11 +139,19 @@ def add_AX_columns_to_dataframe(df, Atms, nAtms):
     return padded_A_mat, padded_X_mat 
 
 def prep_data(base_to_smiles_dict: dict, file_path: str, out_dir: str):
-    df = pd.read_csv(file_path, delimiter='\t')
-    df['smiles'] = df['kmer'].apply(lambda x: get_smiles_string(x, base_to_smiles_dict))
+    # df = pd.read_csv(file_path, delimiter='\t')
+    # df['smiles'] = df['kmer'].apply(lambda x: get_smiles_string(x, base_to_smiles_dict))
+    # A,X = add_AX_columns_to_dataframe(df, ['C', 'N', 'O', 'P'], 133)
+    # level_means = col_list = df['level_mean'].values.tolist()
+    # kmer_label = df['kmer'].values.tolist()
+    # data = DatasetLoader(out_dir, A, X, level_means, kmer_labels=kmer_label)
+    # data.process()
+
+    df = pd.read_csv(file_path, delimiter=',')
+    df['smiles'] = df['KXmer'].apply(lambda x: get_smiles_string(x, base_to_smiles_dict))
     A,X = add_AX_columns_to_dataframe(df, ['C', 'N', 'O', 'P'], 133)
-    level_means = col_list = df['level_mean'].values.tolist()
-    kmer_label = df['kmer'].values.tolist()
+    level_means = col_list = df['Mean level'].values.tolist()
+    kmer_label = df['KXmer'].values.tolist()
     data = DatasetLoader(out_dir, A, X, level_means, kmer_labels=kmer_label)
     data.process()
 
@@ -153,10 +161,25 @@ def prep_data(base_to_smiles_dict: dict, file_path: str, out_dir: str):
 dna_file_path = 'data/template_median68pA.model'
 rna_file_path = 'data/template_median69pA.model'
 
+xna = 'Za_r9.4.1'
+# Zn_r9.4.1
+# 'B_r9.4.1'
+# J_r9.4.1
+# Kn_r9.4.1
+# P_r9.4.1
+# Sc_r9.4.1
+# Sn_r9.4.1
+# V_r9.4.1
+# Xt_r9.4.1
+# Zn_r9.4.1
+xna_file_path = 'data/' + xna + '.csv'
+out_dir = 'data/xna_data/' + xna + '/'
+
 dna_base_smiles = {'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
             'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
             'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)CC1',
-            'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1'}
+            'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1'
+}
 
 rna_base_smiles = {
      'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)C(O)C1',
@@ -164,4 +187,21 @@ rna_base_smiles = {
      'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)C(O)C1',
      'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)C(O)C1'
 }
-prep_data(base_to_smiles_dict=rna_base_smiles, file_path=rna_file_path, out_dir="data/dna_rna_data/")
+
+xna_base_smiles = {
+    'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
+    'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
+    'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)CC1',
+    'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1',
+    'V': 'Nc1ccc(N(=O)=O)c(=O)[n]1',
+    'Zn': 'Nc1[nH]c(=O)ccc1N(=O)=[O+]',
+    'Z': 'NC(=O)c2cc(C1OC(COP(=O)(O)O)C(O)C1)c(=O)[nH]c2N',
+    'Sc': 'Cn1ccc(N)nc1=[O+]',
+    'X': '[O+]=c2nc1[nH]ccn1c(=O)[n]2',
+    'Sn': 'Cc1c[nH]c(N)nc1=[O+]',
+    'P': 'Nc2nc(=O)n1cc[n]c1n2',
+    'B': 'Nc1[n]c(=O)nc2[nH]cnc12',
+    'K': 'Nc1ccc(N(=O)=O)c(N)[n+]1',
+    'J': 'Nc1nc(=O)nc2[nH]cc[n+]12'
+}
+prep_data(base_to_smiles_dict=xna_base_smiles, file_path=xna_file_path, out_dir=out_dir)
