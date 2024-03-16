@@ -1,11 +1,14 @@
 import numpy as np
+import itertools
+import os
 from os import sys
+import torch
 from rdkit import Chem
 from rdkit.Chem import rdDepictor
 from rdkit.Chem.Draw import rdMolDraw2D
 from collections import defaultdict
 from torch_geometric.data import Data
-from dataloader import DatasetLoader
+from dataset import DatasetLoader
 import pandas as pd
 
 def get_smiles_string(kmer, base_dict):
@@ -16,17 +19,11 @@ def get_smiles_string(kmer, base_dict):
     smiles = ''.join(map(str, s))+'O'
     return smiles
 
-def to_barcode_feats_dicts(file_path: str):
-    barcode_dict_model = {}
-    ab_feats_medians_model = []
-    f = open(file_path, 'r')
-    row = f.readlines()
-    for i in range (len(row) - 1):
-        line = row[i+1].split("\t")
-        barcode_dict_model[i] = line[0]
-        ab_feats_medians_model.append(line[1])
-    f.close()
-    return barcode_dict_model, ab_feats_medians_model
+def make_bc_smiles_dict(barcode_list, base_dict):
+    barcode_smiles_dict = {}
+    for bc in barcode_list:
+        barcode_smiles_dict[bc] = get_smiles_string(bc, base_dict)
+    return barcode_smiles_dict
 
 def get_n_hydro(smiles):
     '''
@@ -90,38 +87,18 @@ def pad_compound_graph(mat_list, nAtms, axis=None):
                 padded_matrices += [np.pad(m, [(0,pad_length),(0,0)], mode='constant')]
             elif axis is None:
                 padded_matrices += [np.pad(m, (0,pad_length), mode='constant')]
-        # print('largest atom: ',max(num_atoms))
+        print('largest atom: ',max(num_atoms))
         return np.vstack(padded_matrices)
+ 
 
-def get_AX_matrix(smiles, Atms, nAtms):
-        '''
-        get A and X matrices from a list of SMILES strings
-        '''
-        A_mat_list = []
-        X_mat_list = []
-        for sm in smiles:
-            A, X = get_compound_graph(sm, Atms)
-            A_mat_list += [A]
-            X_mat_list += [X]
-            
-        padded_A_mat = pad_compound_graph(A_mat_list, nAtms)
-        padded_X_mat = pad_compound_graph(X_mat_list, nAtms, axis=0)
-        
-        padded_A_mat = np.split(padded_A_mat, len(smiles), axis=0)
-        padded_A_mat = np.array(padded_A_mat)
-        padded_X_mat = np.split(padded_X_mat, len(smiles), axis=0)
-        padded_X_mat = np.array(padded_X_mat)
-
-        return padded_A_mat, padded_X_mat
-
-def add_AX_columns_to_dataframe(df, Atms, nAtms):
+def get_AX_matrix(df, Atms, nAtms):
     '''
     Add A and X matrices as columns to DataFrame containing smiles strings
     '''
     A_mat_list = []
     X_mat_list = []
     
-    print(len(df['smiles']))
+    # print(len(df['smiles']))
 
     for sm in df['smiles']:
         A, X = get_compound_graph(sm, Atms)
@@ -138,30 +115,49 @@ def add_AX_columns_to_dataframe(df, Atms, nAtms):
 
     return padded_A_mat, padded_X_mat 
 
-def prep_data(base_to_smiles_dict: dict, file_path: str, out_dir: str):
-    df = pd.read_csv(file_path, delimiter='\t')
-    df['smiles'] = df['kmer'].apply(lambda x: get_smiles_string(x, base_to_smiles_dict))
-    A,X = add_AX_columns_to_dataframe(df, ['C', 'N', 'O', 'P'], 133)
-    level_means = col_list = df['level_mean'].values.tolist()
-    kmer_label = df['kmer'].values.tolist()
-    data = DatasetLoader(out_dir, A, X, level_means, kmer_labels=kmer_label)
+def process_kmer_data(kmer_source_file):
+
+    df = pd.read_csv(kmer_source_file) 
+    print(df)
+
+    # smiles strings for each base ('Z' and 'S' in kmer strings can be Zn/Za or Sn/Sc)
+    xna_base_smiles = {'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
+                'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
+                'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)CC1',
+                'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1',
+                'V': 'Nc1ccc(N(=O)=O)c(=O)[n]1', 
+                # 'Z': 'Nc1[nH]c(=O)ccc1N(=O)=[O+]', #Zn
+                # 'S': 'Cn1ccc(N)nc1=[O+]', #Sc
+                'X': '[O+]=c2nc1[nH]ccn1c(=O)[n]2', 
+                'S': 'Cc1c[nH]c(N)nc1=[O+]', #Sn
+                'P': 'Nc2nc(=O)n1cc[n]c1n2', 
+                'B': 'Nc1[n]c(=O)nc2[nH]cnc12', 
+                'K': 'Nc1ccc(N(=O)=O)c(N)[n+]1',
+                'J': 'Nc1nc(=O)nc2[nH]cc[n+]12',
+                'Z': 'NC(=O)c2cc(C1OC(COP(=O)(O)O)C(O)C1F)c(=O)[nH]c2N'} #Za
+
+    df['smiles'] = df['KXmer'].apply(lambda x: get_smiles_string(x, xna_base_smiles))
+
+    A,X = get_AX_matrix(df, ['C', 'N', 'O', 'P', 'F'], 133)
+
+    level_means = col_list = df['Mean level'].values.tolist()
+
+    save_dir = os.path.join('processed_XNA/data', os.path.basename(kmer_source_file).split('.')[0])
+
+    data = DatasetLoader(save_dir, A, X, level_means)
     data.process()
 
-        
-### MAIN ###
-# load data
-dna_file_path = 'data/template_median68pA.model'
-rna_file_path = 'data/template_median69pA.model'
-
-dna_base_smiles = {'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
-            'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
-            'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)CC1',
-            'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1'}
-
-rna_base_smiles = {
-     'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)C(O)C1',
-     'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C=C2)C(O)C1',
-     'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)C(O)C1',
-     'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)C(O)C1'
-}
-prep_data(base_to_smiles_dict=rna_base_smiles, file_path=rna_file_path, out_dir="data/dna_rna_data/")
+# XNA data
+# ------------------------------------------
+# kmer source files
+ATGC = 'data/ATGC_r9.4.1.csv' 
+B = 'data/B_r9.4.1.csv' 
+J = 'data/J_r9.4.1.csv'
+Kn = 'data/Kn_r9.4.1.csv'
+P = 'data/P_r9.4.1.csv'
+Sc = 'data/Sc_r9.4.1.csv'
+Sn = 'data/Sn/Sn_r9.4.1.csv'
+V = 'data/V_r9.4.1.csv'
+Xt = 'data/Xt_r9.4.1.csv'
+Zn = 'data/Zn_r9.4.1.csv'
+Za = 'data/Za_r9.4.1.csv'
