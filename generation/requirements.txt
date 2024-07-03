@@ -1,0 +1,24 @@
+torch>=2.1.0dev
+lightning==2.1.2 # not sure if we need 
+lightning[app] # don't think we need
+jsonargparse[signatures]  # CLI: don't think we need?
+pyarrow # not sure what this does
+tokenizers
+sentencepiece # might need
+wandb # don't think we need
+zstd
+tqdm
+# for finetuning (ours)
+transformers
+evaluate
+accelerate
+bitsandbytes
+peft
+SmilesPE
+rdkit
+# for vis
+matplotlib
+seaborn
+numpy
+pandas
+scikit-learn

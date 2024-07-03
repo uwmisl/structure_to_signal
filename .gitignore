@@ -3,3 +3,7 @@
 /test_results
 *.pt
 /wandb
+kmer-project
+playground
+test-project
+generation/**/
