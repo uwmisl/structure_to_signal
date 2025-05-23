@@ -19,6 +19,14 @@ def get_smiles_string(kmer, base_dict):
     smiles = ''.join(map(str, s))+'O'
     return smiles
 
+def get_disconnected_smiles_string(kmer, base_dict):
+    s = []
+    for base in range(0, len(kmer)):
+        b = kmer[base]
+        s.append(base_dict.get(b))
+    smiles = '.'.join(map(str, s))
+    return smiles
+
 def make_bc_smiles_dict(barcode_list, base_dict):
     barcode_smiles_dict = {}
     for bc in barcode_list:
@@ -27,8 +35,7 @@ def make_bc_smiles_dict(barcode_list, base_dict):
 
 def get_n_hydro(smiles):
     '''
-    get number of Hs - takes a SMILES string, converts it into a molecule object, adds hydrogen atoms to the molecule, and calculates the number of hydrogen atoms added. 
-    This function provides a convenient way to determine the number of hydrogen atoms in a given molecule
+    Adapted from Ding et al. Towards inferring nanopore sequencing ionic currents from nucleotide chemical structures, Nature Communications, 2021
     '''
     mol = Chem.MolFromSmiles(smiles) # Converts the SMILES string into a molecule object using the Chem.MolFromSmiles function from the RDKit library
     before = mol.GetNumAtoms() # Retrieves the number of atoms in the original molecule before adding hydrogen atoms
@@ -39,9 +46,7 @@ def get_n_hydro(smiles):
 
 def get_compound_graph(smiles, Atms):
     '''
-    Based on pipeline developed by Duvenaud et al. Convolutional networks on graphs for learning molecular fingerprints, Advances in neural information processing systems, 2015; pp 2224-2232
-    Converts a SMILES string into a molecule object, extracts various features of each atom, and constructs the adjacency and feature matrices representing the molecular graph
-    Returns adjacency (A) and feature matrix (X)
+    Adapted from Ding et al. Towards inferring nanopore sequencing ionic currents from nucleotide chemical structures, Nature Communications, 2021
     '''  
     mol = Chem.MolFromSmiles(smiles) # converts SMILES string into molecule object   
     X = np.zeros((mol.GetNumAtoms(), len(Atms) + 4))
@@ -70,11 +75,7 @@ def get_compound_graph(smiles, Atms):
 
 def pad_compound_graph(mat_list, nAtms, axis=None):
         '''
-        MutliGraphCNN assumes that the number of nodes for each graph in the dataset is same.
-        for graph with arbitrary size, we append all-0 rows/columns in adjacency and feature matrices and based on max graph size
-        function takes in a list of matrices, and pads them to the max graph size
-        assumption is that all matrices in there should be symmetric (#atoms x #atoms)
-        output is a concatenated version of the padded matrices from the lsit
+        Adapted from Ding et al. Towards inferring nanopore sequencing ionic currents from nucleotide chemical structures, Nature Communications, 2021
         '''
         assert type(mat_list) is list
         padded_matrices = []
@@ -93,7 +94,7 @@ def pad_compound_graph(mat_list, nAtms, axis=None):
 
 def get_AX_matrix(df, Atms, nAtms):
     '''
-    Add A and X matrices as columns to DataFrame containing smiles strings
+    Adapted from Ding et al. Towards inferring nanopore sequencing ionic currents from nucleotide chemical structures, Nature Communications, 2021
     '''
     A_mat_list = []
     X_mat_list = []
@@ -115,36 +116,55 @@ def get_AX_matrix(df, Atms, nAtms):
 
     return padded_A_mat, padded_X_mat 
 
-def process_kmer_data(kmer_source_file):
+def process_kmer_data(kmer_source_file, smiles_type):
 
     df = pd.read_csv(kmer_source_file) 
-    print(df)
 
-    # smiles strings for each base ('Z' and 'S' in kmer strings can be Zn/Za or Sn/Sc)
-    xna_base_smiles = {'A': 'OP(=O)(O)OCC1OC(N3C=NC2=C(N)N=CN=C23)CC1',
+    # With sugar phosphate backbone:
+    backbone_base_smiles = {'A': 'Nc1ncnc2c1ncn2C3CCC(COP(=O)(O)O)O3', 
                 'T': 'OP(=O)(O)OCC1OC(N2C(=O)NC(=O)C(C)=C2)CC1',
                 'G': 'OP(=O)(O)OCC1OC(N2C=NC3=C2N=C(N)NC3=O)CC1',
                 'C': 'OP(=O)(O)OCC1OC(N2C(=O)N=C(N)C=C2)CC1',
-                'V': 'Nc1ccc(N(=O)=O)c(=O)[n]1', 
-                # 'Z': 'Nc1[nH]c(=O)ccc1N(=O)=[O+]', #Zn
-                # 'S': 'Cn1ccc(N)nc1=[O+]', #Sc
-                'X': '[O+]=c2nc1[nH]ccn1c(=O)[n]2', 
-                'S': 'Cc1c[nH]c(N)nc1=[O+]', #Sn
-                'P': 'Nc2nc(=O)n1cc[n]c1n2', 
-                'B': 'Nc1[n]c(=O)nc2[nH]cnc12', 
-                'K': 'Nc1ccc(N(=O)=O)c(N)[n+]1',
-                'J': 'Nc1nc(=O)nc2[nH]cc[n+]12',
-                'Z': 'NC(=O)c2cc(C1OC(COP(=O)(O)O)C(O)C1F)c(=O)[nH]c2N'} #Za
+                'S': 'Cc2cn(C1CCC(COP(=O)(O)O)O1)c(N)nc2=O', #Sn
+                'S': 'Cn2cc(C1CCC(COP(=O)(O)O)O1)c(N)nc2=O', #Sc
+                'B': 'Nc1[nH]c(=O)nc2c1ncn2C3CCC(COP(=O)(O)O)O3',
+                'P': 'Nc3nc(=O)n2ccn(C1CCC(COP(=O)(O)O)O1)c2n3',
+                'Z': 'Nc2[nH]c(=O)c(C1CCC(COP(=O)(O)O)O1)cc2[N+](=O)O', #Zn
+                'J': 'Nc2nc(=O)nc3n(C1CCC(COP(=O)(O)O)O1)ccn23',
+                'V': 'Nc1[nH]c(=O)c([N+](=O)O)cc1C2CCC(COP(=O)(O)O)O2',
+                'X': 'O=c3nc2n(C1CCC(COP(=O)(O)O)O1)ccn2c(=O)[nH]3',
+                'K': 'NC(=NC(N)=C1C(OC2COP(O)(=O)O)CC2)C(=C1)[N+](O)=O',
+                'Z': 'NC(=O)c2cc(C1OC(COP(=O)(O)O)C(O)C1F)c(=O)[nH]c2N'} #Za 
+
+    # Without sugar phosphate backbone
+    no_backbone_smiles = {'A': 'Nc1ncnc2[nH]cnc12', 
+        'T': 'Cc1c[nH]c(=O)[nH]c1=O',
+        'G': 'Nc2nc1[nH]cnc1c(=O)[nH]2',
+        'C': 'Nc1cc[nH]c(=O)n1',
+        'S': 'Cc1c[nH]c(N)nc1=O', #Sn
+        'S': 'Cn1ccc(N)nc1=O', #Sc
+        'B': 'Nc1[nH]c(=O)nc2[nH]cnc12',
+        'P': 'Nc2nc(=O)n1cc[nH]c1n2',
+        'Z': 'Nc1[nH]c(=O)ccc1[N+](=O)O', #Zn
+        'J': 'Nc1nc(=O)nc2[nH]ccn12',
+        'V': 'Nc1ccc([N+](=O)O)c(=O)[nH]1',
+        'X': 'O=c2nc1[nH]ccn1c(=O)[nH]2',
+        'K': 'Nc1ccc([N+](=O)O)c(N)n1',
+        'Z': 'NC(=O)c1ccc(=O)[nH]c1N'} #Za
+
+    if smiles_type == backbone: xna_base_smiles = backbone_base_smiles
+    else xna_base_smiles = no_backbone_smiles
 
     df['smiles'] = df['KXmer'].apply(lambda x: get_smiles_string(x, xna_base_smiles))
 
-    A,X = get_AX_matrix(df, ['C', 'N', 'O', 'P', 'F'], 133)
+    A,X = get_AX_matrix(df, ['C', 'N', 'O', 'P', 'F'], 44)
 
     level_means = col_list = df['Mean level'].values.tolist()
+    kmer_labels = col_list = df['KXmer'].values.tolist()
 
     save_dir = os.path.join('processed_XNA/data', os.path.basename(kmer_source_file).split('.')[0])
 
-    data = DatasetLoader(save_dir, A, X, level_means)
+    data = DatasetLoader(save_dir, A, X, level_means, kmer_labels)
     data.process()
 
 # XNA data
