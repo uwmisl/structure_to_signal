@@ -1,0 +1,39 @@
+{
+    "repo_path": "/gscratch/ml4ml/sidlak/structure_to_signal",
+    "do_train": true,
+    "do_inference": false,
+    "data_paths": {
+        "A": "data/ATGC_r9.4.1.csv",
+        "B": "data/B_r9.4.1.csv",
+        "J": "data/J_r9.4.1.csv",
+        "Kn": "data/Kn_r9.4.1.csv",
+        "P": "data/P_r9.4.1.csv",
+        "Sc": "data/Sc_r9.4.1.csv",
+        "Sn": "data/Sn_r9.4.1.csv",
+        "V": "data/V_r9.4.1.csv",
+        "Xt": "data/Xt_r9.4.1.csv",
+        "Zn": "data/Zn_r9.4.1.csv",
+        "Za": "data/Za_r9.4.1.csv"
+    },
+    "train": {
+        "batch_size": 32,
+        "num_epochs": 2,
+        "learning_rate": 5e-4,
+        "weight_decay": 0.1,
+        "warmup_steps": 1000,
+        "gradient_accumulation_steps": 8,
+        "lr_scheduler": "cosine",
+        "checkpoint_every": 250,
+        "log_every": 50,
+        "fp16": true
+    },
+    "eval": {
+        "batch_size": 32,
+        "eval_every": 50
+    },
+    "inference": {
+        "checkpoint_path": "generation/model/checkpoint-1000",
+        "num_samples": 5,
+        "context": ""
+    }
+}
